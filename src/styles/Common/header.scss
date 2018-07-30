@@ -1,0 +1,21 @@
+@import '../variables.scss';
+.header-container {
+    .header-ul {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        list-style-type: none;
+        background-color: $theme_color;
+        .header-li {
+            float: left;
+            padding: 15px;
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            &:hover {
+                background-color: #213359;
+            }
+        }
+    }
+}

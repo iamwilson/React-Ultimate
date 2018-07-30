@@ -1,0 +1,32 @@
+@import '../variables.scss';
+.login-container {
+    width: 35%;
+    top: 50%;
+    left: 50%;
+    border-radius: 4px;
+    position: absolute;
+    border: 2px solid #d1d4d7;
+    transform: translate(-50%, -50%);
+    .login-wrapper {
+        padding: 20px;
+        input {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+        button {
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            background-color: $theme_color;
+        }
+    }
+}
