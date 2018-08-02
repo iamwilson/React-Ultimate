@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 // actions
-import * as employeeActions from "../../actions/Employee/employeeActions";
+import * as employeeActions from "../../actions/employeeActions";
 
 interface IListComponentProps {
   employees: any;

@@ -3,7 +3,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import * as employeeActions from "../../actions/Employee/employeeActions";
+import * as employeeActions from "../../actions/employeeActions";
 
 interface IDetailsComponentProps {
   employeeDetails: any;
