@@ -1,5 +1,5 @@
-import * as api from "../../apis/api";
-import * as types from "../../constants/actionTypes";
+import * as api from "../apis/api";
+import * as types from "../constants/actionTypes";
 
 const getData = (loading: boolean) => ({
   type: types.GET_DATA,
@@ -16,7 +16,7 @@ const getEmployeeSuccess = (employee: any) => ({
   payload: employee
 });
 
-const getDataError = (error: boolean) => ({
+const getDataError = (error: any) => ({
   type: types.GET_DATA_ERROR,
   payload: error
 });
@@ -24,36 +24,31 @@ const getDataError = (error: boolean) => ({
 export const getEmployeesData = () => {
   return (dispatch: any) => {
     dispatch(getData(true));
-
-    api
+    return api
       .Api()
       .getEmployees()
       .then(response => {
-        if (response.status !== 200) throw Error(response.statusText);
-
+        dispatch(getEmployeesSuccess(response.data));
         dispatch(getData(false));
-
-        return response;
       })
-      .then(response => dispatch(getEmployeesSuccess(response.data)),
-)
-      .catch(() => dispatch(getDataError(true)));
+      .catch((error: any) => {
+        dispatch(getDataError(error));
+      });
   };
 };
 
 export const getEmployeeData = (id: any) => {
   return (dispatch: any) => {
     dispatch(getData(true));
-
-    api.Api().getEmployee(id).then(response => {
-        dispatch(getData(false));
-        return response;
-      })
+    return api
+      .Api()
+      .getEmployee(id)
       .then(response => {
-        dispatch(getEmployeeSuccess(response.data));
+        dispatch(getEmployeeSuccess(response));
+        dispatch(getData(false));
       })
-      .catch(() => {
-        dispatch(getData(true));
+      .catch((error : any) => {
+        dispatch(getDataError(error));
       });
   };
 };
