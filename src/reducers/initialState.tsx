@@ -1,6 +1,6 @@
 export const initialState: any = {
   employees: [], 
-  employeeDetails: [],
+  employeeDetails: {},
   isLoading: false,
-  error: false
+  error: {}
 };
