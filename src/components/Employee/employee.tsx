@@ -1,15 +1,15 @@
 // base
-import * as React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 //
-import { Employee } from "../../models/employee";
-import TextBoxComponent from "../elements/textBox";
-import * as employeeActions from "../../actions/employeeActions";
+import { Employee } from '../../models/employee';
+import TextBoxComponent from '../elements/textBox';
+import * as employeeActions from '../../actions/employeeActions';
 
 interface IEmployeeComponentProps {
-  employeeDetails: any;
+  employee: any;
 
   match: any;
   actions: any;
@@ -40,11 +40,9 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
 
     if (isAdd) {
       this.props.actions.getEmployeeData(this.props.match.params.id).then(() => {
-          let employeeObject = this.props.employeeDetails.data[0];
-          this.setState({ 
-            isUpdate: true,
-            employee: employeeObject
-           });
+          let employeeObject = this.props.employee.data[0];
+          this.setState({ isUpdate: true,  employee: employeeObject  });
+
         });
     }
   }
@@ -83,7 +81,7 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
               name="userName"
               type="text"
               placeholder="Enter Username"
-              value={this.state.employee.userName || ''} 
+              value={this.state.employee.username || ''} 
               onChange={this.handleChange}
             />
             <TextBoxComponent
@@ -128,7 +126,7 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
 
 const mapStateToProps = (state: any) => {
   return {
-    employeeDetails: state.employees.employeeDetails
+    employee: state.employee
   };
 };
 
