@@ -39,14 +39,6 @@ class ListComponent extends React.Component<IListComponentProps> {
 
     let isEmpty = Object.keys(this.props.error).length === 0;
 
-    if (!isEmpty) {
-      return <p>Sorry! There was an error loading the items</p>;
-    }
-
-    if (this.props.isLoading) {
-      return <p>Loading ...</p>;
-    }
-
     return (
       <div className="list-container">
         <h2 className="header-wrapper">Employee List</h2>
@@ -92,7 +84,7 @@ class ListComponent extends React.Component<IListComponentProps> {
 const mapStateToProps = (state: any) => {
   return {
     employees: state.employees.employees,
-    isLoading: state.employees.isLoading,
+    isLoading: state.loader.isLoading,
     error: state.employees.error
   };
 };
@@ -103,7 +95,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ListComponent);
+export default connect(mapStateToProps,  mapDispatchToProps)(ListComponent);
