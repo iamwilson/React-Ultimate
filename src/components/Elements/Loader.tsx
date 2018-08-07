@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface ILoaderProps {
   isLoading: boolean;
@@ -15,7 +15,7 @@ class LoaderComponent extends React.Component<ILoaderProps> {
     if (this.props.isLoading) {
       return <div className="loader-container">isLoading</div>;
     } else{
-      return (<div></div>);
+      return (null);
     }
   }
 }
