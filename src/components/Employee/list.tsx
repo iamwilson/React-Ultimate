@@ -1,30 +1,41 @@
 // base
-import * as React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-// actions
-import * as employeeActions from "../../actions/employeeActions";
+import { Employee } from '../../models/employee';
+import * as employeeActions from '../../actions/employeeActions';
+
 
 interface IListComponentProps {
   employees: any;
-  isLoading: any;
-  error: any;
-
+  
   actions: any;
   history: any;
 }
 
-class ListComponent extends React.Component<IListComponentProps> {
+interface IListComponentState {
+   employees: Array<Employee>;
+}
+
+class ListComponent extends React.Component<IListComponentProps, IListComponentState> {
   constructor(props: IListComponentProps) {
     super(props);
+
+    this.state = {
+      employees: [],
+    }
 
     this.addEmployee = this.addEmployee.bind(this);
     this.viewEmployee = this.viewEmployee.bind(this);
   }
 
   componentDidMount() {
-    this.props.actions.getEmployeesData();
+    this.props.actions.getEmployeesData().then(() => {
+      let employeesObject = this.props.employees.data;
+      this.setState({ employees: employeesObject });
+    });;
+
   }
 
   addEmployee() {
@@ -36,8 +47,6 @@ class ListComponent extends React.Component<IListComponentProps> {
   }
 
   render() {
-
-    let isEmpty = Object.keys(this.props.error).length === 0;
 
     return (
       <div className="list-container">
@@ -61,7 +70,7 @@ class ListComponent extends React.Component<IListComponentProps> {
                 <th>Actions</th>
               </tr>
 
-              {this.props.employees.map((employee: any, index: any) => (
+              {this.state.employees.map((employee: Employee, index) => (
                 <tr key={index}>
                   <td>{employee.id}</td>
                   <td>{employee.name}</td>
@@ -83,9 +92,7 @@ class ListComponent extends React.Component<IListComponentProps> {
 
 const mapStateToProps = (state: any) => {
   return {
-    employees: state.employees.employees,
-    isLoading: state.loader.isLoading,
-    error: state.employees.error
+    employees: state.employees
   };
 };
 
