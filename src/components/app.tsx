@@ -1,16 +1,16 @@
 // base
 import * as React from "react";
-import { connect } from 'react-redux';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { connect } from "react-redux";
+import { Route, Switch, withRouter } from "react-router-dom";
 
 // components
-import ListComponent from './employee/list';
-import LoginComponent from './login/login';
-import AboutComponent from './about/about';
-import HeaderComponent from './common/header';
-import EmployeeComponent from './employee/employee';
-import InventoryComponent from './inventory/inventory';
-import LoaderComponent from './elements/loader';
+import ListComponent from "./employee/list";
+import LoginComponent from "./login/login";
+import AboutComponent from "./about/about";
+import HeaderComponent from "./common/header";
+import EmployeeComponent from "./employee/employee";
+import InventoryComponent from "./inventory/inventory";
+import LoaderComponent from "./elements/loader";
 
 interface IAppProps {
   isLoading: any;
@@ -39,7 +39,7 @@ class App extends React.Component<IAppProps, IAppState> {
       return (
         <div>
           <HeaderComponent />
-          <LoaderComponent isLoading = {this.props.isLoading} />
+          <LoaderComponent isLoading={this.props.isLoading > 0} />
           <Switch>
             <Route exact path="/" component={ListComponent} />
             <Route path="/about" component={AboutComponent} />
@@ -55,10 +55,10 @@ class App extends React.Component<IAppProps, IAppState> {
   }
 }
 
-function mapStateToProps(state : any) {
-  return{
-    isLoading: state.loader.isLoading
+function mapStateToProps(state: any) {
+  return {
+    isLoading: state.isLoading
   };
-};
+}
 
 export default withRouter<any>(connect(mapStateToProps)(App));
