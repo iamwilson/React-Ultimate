@@ -1,12 +1,12 @@
 // base
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import * as React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 //
-import { Employee } from '../../models/employee';
-import TextBoxComponent from '../elements/textBox';
-import * as employeeActions from '../../actions/employeeActions';
+import { Employee } from "../../models/employee";
+import TextBoxComponent from "../elements/textBox";
+import * as employeeActions from "../../actions/employeeActions";
 
 interface IEmployeeComponentProps {
   employeeResult: any;
@@ -23,7 +23,10 @@ interface IEmployeeComponentState {
   isUpdate: boolean;
 }
 
-class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmployeeComponentState> {
+class EmployeeComponent extends React.Component<
+  IEmployeeComponentProps,
+  IEmployeeComponentState
+> {
   constructor(props: any) {
     super(props);
 
@@ -67,12 +70,10 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
     let empObject: Employee = Object.assign({}, this.state.employee);
 
     empObject[key] = value;
-    
-    this.setState({ employee : empObject}, ()=>{  
+
+    this.setState({ employee: empObject }, () => {
       console.log(this.state.employee);
     });
-    
-
   }
 
   handleSubmit() {}
@@ -153,7 +154,6 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
                 </button>
               )}
             </form>
-
           </div>
         </div>
       </div>

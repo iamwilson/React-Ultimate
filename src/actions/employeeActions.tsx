@@ -1,5 +1,5 @@
-import * as api from '../apis/api';
-import * as types from '../constants/actionTypes';
+import * as api from "../apis/api";
+import * as types from "../constants/actionTypes";
 
 const beginApiCall = () => ({
   type: types.BEGIN_API_CALL
@@ -18,7 +18,6 @@ const getEmployeesError = (error: any) => ({
   type: types.GET_EMPLOYEES_ERROR,
   error: error
 });
-
 
 const getEmployeeSuccess = (employee: any) => ({
   type: types.GET_EMPLOYEE_SUCCESS,

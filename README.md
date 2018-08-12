@@ -1,2 +1,2 @@
 # React-Ultimate
-React with Redux
+Enterprise App built with React and Redux
