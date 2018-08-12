@@ -43,7 +43,7 @@ class App extends React.Component<IAppProps, IAppState> {
           <Switch>
             <Route exact path="/" component={ListComponent} />
             <Route path="/about" component={AboutComponent} />
-            <Route path="/inventory" compinent={InventoryComponent} />
+            <Route path="/inventory" component={InventoryComponent} />
             <Route exact path="/employee" component={EmployeeComponent} />
             <Route exact path="/employee/:id" component={EmployeeComponent} />
           </Switch>
