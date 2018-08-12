@@ -1,15 +1,13 @@
+import { combineReducers } from "redux";
 
-import { combineReducers } from 'redux';
-
-import error from './error/errorReducer';
-import isLoading from './loading/loadingReducer';
-import employees from './employeesList/employeesListReducer';
-import employee from './employeeDetails/employeeDetailsReducer'
-
+import employee from "./employee/employeeReducer";
+import employees from "./employees/employeesReducer";
+import error from "./error/errorReducer";
+import isLoading from "./loading/loadingReducer";
 
 export const rootReducer = combineReducers({
-  error,
-  isLoading,
-  employees,
   employee,
-})
+  employees,
+  error,
+  isLoading
+});

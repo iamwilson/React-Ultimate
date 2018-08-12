@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 // components
-import ListComponent from './employee/list';
-import LoginComponent from './login/login';
-import AboutComponent from './about/about';
-import HeaderComponent from './common/header';
-import EmployeeComponent from './employee/employee';
-import InventoryComponent from './inventory/inventory';
-import LoaderComponent from './elements/loader';
+import ListComponent from './components/employee/list';
+import LoginComponent from './components/login/login';
+import AboutComponent from './components/about/about';
+import HeaderComponent from './components/common/header';
+import EmployeeComponent from './components/employee/employee';
+import InventoryComponent from './components/inventory/inventory';
+import LoaderComponent from './components/elements/loader';
 
 interface IAppProps {
   isLoading: any;

@@ -6,12 +6,12 @@ export class Employee {
   phone: string;
   website: string;
 
-  constructor(){
-    this.id = '';
-    this.name = '';
-    this.username = '';
-    this.email = '';
-    this.phone = '';
-    this.website = '';
+  constructor() {
+    this.id = "";
+    this.name = "";
+    this.username = "";
+    this.email = "";
+    this.phone = "";
+    this.website = "";
   }
 }

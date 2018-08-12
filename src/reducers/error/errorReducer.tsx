@@ -1,5 +1,5 @@
-import { initialState } from "../initialState";
-import * as types from "../../constants/actionTypes";
+import { initialState } from '../initialState';
+import * as types from '../../constants/actionTypes';
 
 const errorReducer = (state = initialState.error, action: any) => {
   switch (action.type) {
