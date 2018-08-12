@@ -1,53 +1,63 @@
-import * as api from "../apis/api";
-import * as types from "../constants/actionTypes";
+import * as api from '../apis/api';
+import * as types from '../constants/actionTypes';
 
-const getData = (loading: boolean) => ({
-  type: types.GET_DATA,
-  payload: loading
+const beginApiCall = () => ({
+  type: types.BEGIN_API_CALL
+});
+
+const endApiCall = () => ({
+  type: types.END_API_CALL
 });
 
 const getEmployeesSuccess = (employees: any) => ({
   type: types.GET_EMPLOYEES_SUCCESS,
-  payload: employees
+  employees: employees
 });
+
+const getEmployeesError = (error: any) => ({
+  type: types.GET_EMPLOYEES_ERROR,
+  error: error
+});
+
 
 const getEmployeeSuccess = (employee: any) => ({
   type: types.GET_EMPLOYEE_SUCCESS,
-  payload: employee
+  employee: employee
 });
 
-const getDataError = (error: boolean) => ({
-  type: types.GET_DATA_ERROR,
-  payload: error
+const getEmployeeError = (error: any) => ({
+  type: types.GET_EMPLOYEE_ERROR,
+  error: error
 });
 
 export const getEmployeesData = () => {
   return (dispatch: any) => {
-    dispatch(getData(true));
-
-    api
+    dispatch(beginApiCall());
+    return api
       .Api()
       .getEmployees()
       .then(response => {
-        dispatch(getEmployeesSuccess(response.data));
-        dispatch(getData(false));
+        dispatch(getEmployeesSuccess(response));
+        dispatch(endApiCall());
       })
-      .catch(() => dispatch(getDataError(true)));
+      .catch((error: any) => {
+        dispatch(getEmployeesError(error));
+      });
   };
 };
 
 export const getEmployeeData = (id: any) => {
   return (dispatch: any) => {
-    dispatch(getData(true));
-    api
+    dispatch(beginApiCall());
+    return api
       .Api()
       .getEmployee(id)
       .then(response => {
-        dispatch(getEmployeeSuccess(response.data));
-        dispatch(getData(false));
+        dispatch(getEmployeeSuccess(response));
+        dispatch(endApiCall());
       })
-      .catch(() => {
-        dispatch(getDataError(true));
+      .catch((error: any) => {
+        dispatch(getEmployeeError(error));
       });
   };
 };

@@ -1,9 +1,8 @@
 // base
 import * as React from 'react';
-import { connect } from 'react-redux';
 
 // components
-import TextBoxComponent from '../elements/TextBox';
+import TextBoxComponent from '../elements/textBox';
 
 interface ILoginComponentProps {
   isAuthenticated: (value: boolean) => void;
@@ -14,10 +13,7 @@ interface ILoginComponentState {
   passWord: string;
 }
 
-class LoginComponent extends React.Component<
-  ILoginComponentProps,
-  ILoginComponentState
-> {
+class LoginComponent extends React.Component<ILoginComponentProps, ILoginComponentState> {
   constructor(props: ILoginComponentProps) {
     super(props);
     this.state = {
@@ -25,8 +21,8 @@ class LoginComponent extends React.Component<
       passWord: ""
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.submitLogin = this.submitLogin.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
@@ -34,7 +30,7 @@ class LoginComponent extends React.Component<
   }
 
   submitLogin() {
-    this.props.isAuthenticated(true);
+    setTimeout(() => { this.props.isAuthenticated(true); }, 500);
   }
 
   render() {
@@ -65,10 +61,4 @@ class LoginComponent extends React.Component<
   }
 }
 
-const mapStateToProps = (state: any) => {
-  return {
-    loginSuccess: state.loginSuccess
-  };
-};
-
-export default connect(mapStateToProps)(LoginComponent);
+export default LoginComponent;

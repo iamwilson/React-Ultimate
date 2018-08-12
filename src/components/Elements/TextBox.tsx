@@ -4,7 +4,7 @@ interface ITextboxProps {
   label?: string;
   name: string;
   type: string;
-  value?: string;
+  value: string;
   focus?: boolean;
   placeholder?: string;
   onChange?: (event: any) => void;

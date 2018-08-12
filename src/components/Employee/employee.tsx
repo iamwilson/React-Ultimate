@@ -1,71 +1,159 @@
-import * as React from "react";
-import TextBoxComponent from '../Elements/TextBox';
+// base
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-interface IEmployeeComponentProps{
-  match: any
+//
+import { Employee } from '../../models/employee';
+import TextBoxComponent from '../elements/textBox';
+import * as employeeActions from '../../actions/employeeActions';
 
+interface IEmployeeComponentProps {
+  employeeResult: any;
+
+  match: any;
+  actions: any;
+  result: any;
+  response: any;
+  isUpdate: boolean;
 }
 
-class EmployeeComponent extends React.Component<IEmployeeComponentProps> {
+interface IEmployeeComponentState {
+  employee: Employee;
+  isUpdate: boolean;
+}
 
-  componentDidMount(){
-    //this.props.actions.getEmployeeData(this.props.match.params.id);
+class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmployeeComponentState> {
+  constructor(props: any) {
+    super(props);
 
-    console.log(this.props.match.params.id);
+    this.state = {
+      employee: new Employee(),
+      isUpdate: false
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.addEmployee = this.addEmployee.bind(this);
   }
+
+  componentDidMount() {
+    let isAdd = this.props.match.params.id === undefined ? false : true;
+
+    if (isAdd) {
+      this.props.actions
+        .getEmployeeData(this.props.match.params.id)
+        .then(() => {
+          let employeeObject = this.props.employeeResult.data[0];
+          this.setState({ isUpdate: true, employee: employeeObject });
+        });
+    }
+  }
+
+  componentWillReceiveProps(nextProps: any) {
+    //let employeeObject = nextProps.employeeDetails.data[0];
+    //console.log("next props", employeeObject);
+    //this.setState({employee : employeeObject })
+  }
+
+  componentDidUpdate(prevProps: any) {
+    // console.log('did update previous', prevProps  )
+    // console.log("Did Update current", this.props.employeeDetails);
+  }
+
+  handleChange(e: any) {
+    let key = e.target.name;
+    let value = e.target.value;
+    let empObject: Employee = Object.assign({}, this.state.employee);
+
+    empObject[key] = value;
+    
+    this.setState({ employee : empObject}, ()=>{  
+      console.log(this.state.employee);
+    });
+    
+
+  }
+
+  handleSubmit() {}
+
+  addEmployee() {}
+
   render() {
     return (
-      <div className="add-container">
-        <h2 className="header-wrapper">Add Employee</h2>
-        <div className="l-container">
+      <div className="employee-container">
+        <h2 className="header-wrapper">Employee Details</h2>
+        <div className="employee-wrapper">
           <div className="l-wrapper">
+            <form onSubmit={this.handleSubmit}>
+              <TextBoxComponent
+                label="Name:"
+                name="name"
+                type="text"
+                focus={true}
+                placeholder="Enter Name"
+                value={this.state.employee.name}
+                onChange={e => {
+                  this.handleChange(e);
+                }}
+              />
 
-            <TextBoxComponent
-              label="Name"
-              name="Name"
-              type="text"
-              focus={true}
-              placeholder="Enter Name"
-              // value={this.state.userName}
-              // onChange={this.handleChange}
-            />
+              <TextBoxComponent
+                label="Username:"
+                name="username"
+                type="text"
+                placeholder="Enter Username"
+                value={this.state.employee.username}
+                onChange={e => {
+                  this.handleChange(e);
+                }}
+              />
+              <TextBoxComponent
+                label="Email:"
+                name="email"
+                type="text"
+                placeholder="Enter Email"
+                value={this.state.employee.email}
+                onChange={e => {
+                  this.handleChange(e);
+                }}
+              />
 
-            <TextBoxComponent
-              label="Username"
-              name="userName"
-              type="text"
-              placeholder="Enter Username"
-              // value={this.state.userName}
-              // onChange={this.handleChange}
-            />
-            <TextBoxComponent
-              label="Email"
-              name="email"
-              type="text"
-              placeholder="Enter Email"
-              // value={this.state.passWord}
-              // onChange={this.handleChange}
-            />
+              <TextBoxComponent
+                label="Phone:"
+                name="phone"
+                type="text"
+                placeholder="Enter Phone"
+                value={this.state.employee.phone}
+                onChange={e => {
+                  this.handleChange(e);
+                }}
+              />
 
-            <TextBoxComponent
-              label="Phone"
-              name="phone"
-              type="text"
-              placeholder="Enter Phone"
-              // value={this.state.passWord}
-              // onChange={this.handleChange}
-            />
+              <TextBoxComponent
+                label="Website:"
+                name="website"
+                type="text"
+                placeholder="Enter Website"
+                value={this.state.employee.website}
+                onChange={e => {
+                  this.handleChange(e);
+                }}
+              />
 
-            <TextBoxComponent
-              label="Website"
-              name="website"
-              type="text"
-              placeholder="Enter Website"
-              // value={this.state.passWord}
-              // onChange={this.handleChange}
-            />
+              {this.state.isUpdate == true ? (
+                <button className="btn-save">Update</button>
+              ) : (
+                <button
+                  className="btn-add"
+                  type="submit"
+                  onClick={this.addEmployee}
+                >
+                  Add
+                </button>
+              )}
+            </form>
 
-            <button className="btn-save">Save</button>
           </div>
         </div>
       </div>
@@ -73,4 +161,19 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps> {
   }
 }
 
-export default EmployeeComponent;
+const mapStateToProps = (state: any) => {
+  return {
+    employeeResult: state.employee
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    actions: bindActionCreators(employeeActions, dispatch)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EmployeeComponent);

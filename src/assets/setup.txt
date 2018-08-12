@@ -1,0 +1,14 @@
+npm init
+npm i @types/react @types/react-dom @types/react-router-dom @types/react-redux --save-dev
+npm i css-loader style-loader node-sass sass-loader--save-dev
+npm i webpack webpack-dev-server webpack-cli --save-dev
+npm i typescript ts-loader --save-dev
+
+npm i @types/axios --save-dev
+npm i react react-dom react-router-dom redux react-redux axios--save
+
+babel polyfills for IE
+
+Configurations
+==============
+webpack.config.js - mode"", entry"", output{}, resolve{}, modeule{}, plugins[]

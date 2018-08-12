@@ -1,22 +1,23 @@
-// base imports
-import * as React from "react";
-import { Link } from "react-router-dom";
+// base
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 
-class HeaderComponent extends React.Component {
+class HeaderComponent extends React.Component{
+
+  logOutUser(){}
+
   render() {
-    return (
-      <div className="header-container">
-        <ul className="header-ul">
-          <Link className="header-li" to="/">
-            Home
-          </Link>
-          <Link className="header-li" to="/about">
-            About
-          </Link>
-        </ul>
-      </div>
-    );
-  }
+    
+      return (
+        <div className="header-container">
+          <ul className="header-ul">
+            <Link className="header-li" to="/" replace>Home</Link>
+            <Link className="header-li" to="/about" replace>About</Link>
+            <button className="log-out-button" onClick={this.logOutUser}>Logout</button>
+          </ul>
+        </div>
+      );
+    }
 }
 
 export default HeaderComponent;

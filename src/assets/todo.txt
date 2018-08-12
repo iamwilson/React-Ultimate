@@ -1,0 +1,44 @@
+Add loader
+Add validation - email, phone, website
+Add hamberger menu
+Add interceptor
+Add api layer
+Add data model
+Add multi-routing
+
+Add configs for console debug
+Add source map
+Remove bundle.js from index.html
+
+Build scripts 
+ - Dev - webpack dev server
+ - Offline - looks like prod but contains no JSON
+ - Prod - uglified, content slicing (font & images)
+ 
+Routing
+
+Service layer (tier)
+ - Action (redux)
+ - Ajax
+ - Online(REST call) -stateful
+ - Offline(JSON file) - simulated with delay
+
+CRUD operations
+ 
+Layout
+ - Progressive vs adaptive
+ 
+Hamberger Menu
+
+Task Loader - called at start/end. never in app component --> DONE
+
+Multi-language - no state loss / page refresh on switch
+
+Authentication
+ - All urls
+ - Restrict direct url access
+
+ Session 
+ - InMemory - refresh
+ - Persistant - close tab
+ - Session -

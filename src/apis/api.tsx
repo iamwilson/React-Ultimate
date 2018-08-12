@@ -1,8 +1,9 @@
-import * as Configuration from "../configs/config";
-import * as offlineApi from "./offline";
+import * as appSetting from "../configs/config";
 import * as onlineApi from "./online";
+import * as offlineApi from "./offline";
 
 export const Api = () => {
-  if (Configuration.config.mode == Configuration.ONLINE_MODE) return onlineApi;
+  if (appSetting.config.mode === appSetting.ONLINE_MODE) 
+    return onlineApi;
   return offlineApi;
 };

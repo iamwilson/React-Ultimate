@@ -1,0 +1,57 @@
+@import '../variables.scss';
+.btn-save {
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: $blue;
+  margin: 0px 15px 0px 0px;
+}
+
+.btn-save:hover {
+  background-color: #003d7f;
+}
+
+.btn-view {
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: $blue;
+  margin: 0px 15px 0px 0px;
+}
+
+.btn-view:hover {
+  background-color: #003d7f;
+}
+
+.btn-delete {
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: $red;
+  margin: 0px 15px 0px 0px;
+}
+
+.btn-delete:hover {
+  background-color: #841f29;
+}
+
+.btn-add {
+  color: white;
+  padding: 10px 10px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  float: right;
+  border-radius: 4px;
+  background-color: $green;
+}
+
+.btn-add:hover {
+  background-color: #198c19;
+}

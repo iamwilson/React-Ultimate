@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
+
+const url = ``;
 
 export const getEmployees = () => {
-  let url = ``;
   return axios.get(url);
 };
 
-export const getEmployee = (id : any) => {
-  let url = ``;
+export const getEmployee = () => {
   return axios.get(url);
 };

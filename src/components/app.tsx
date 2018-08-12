@@ -1,26 +1,27 @@
 // base
-import * as React from "react";
-import { connect } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 // components
-import LoginComponent from "./Login/login";
-import AboutComponent from "./About/about";
-import HeaderComponent from "./common/header";
-import ListComponent from "./Employee/list";
-import DetailsComponent from "./Employee/details";
-import LoaderComponent from "./Elements/Loader";
+import ListComponent from './employee/list';
+import LoginComponent from './login/login';
+import AboutComponent from './about/about';
+import HeaderComponent from './common/header';
+import EmployeeComponent from './employee/employee';
+import InventoryComponent from './inventory/inventory';
+import LoaderComponent from './elements/loader';
 
 interface IAppProps {
-  // isLoading: boolean;
+  isLoading: any;
 }
 
 interface IAppState {
-  loginSuccess: boolean;
+  loginSuccess: any;
 }
 
 class App extends React.Component<IAppProps, IAppState> {
-  constructor(props: IAppProps) {
+  constructor(props: any) {
     super(props);
     this.state = {
       loginSuccess: false
@@ -38,11 +39,13 @@ class App extends React.Component<IAppProps, IAppState> {
       return (
         <div>
           <HeaderComponent />
-          {/* <LoaderComponent isLoading={this.props.isLoading}/> */}
+          <LoaderComponent isLoading={this.props.isLoading > 0} />
           <Switch>
             <Route exact path="/" component={ListComponent} />
             <Route path="/about" component={AboutComponent} />
-            <Route path="/employee/:id" component={DetailsComponent} />
+            <Route path="/inventory" compinent={InventoryComponent} />
+            <Route exact path="/employee" component={EmployeeComponent} />
+            <Route exact path="/employee/:id" component={EmployeeComponent} />
           </Switch>
         </div>
       );
@@ -52,10 +55,10 @@ class App extends React.Component<IAppProps, IAppState> {
   }
 }
 
-// const mapStateToProps=(state: any) =>{
-//   return{
-//     isLoading: state.employees.isLoading,
-//   }
-// }
+function mapStateToProps(state: any) {
+  return {
+    isLoading: state.isLoading
+  };
+}
 
-export default (App);
+export default withRouter<any>(connect(mapStateToProps)(App));
