@@ -1,13 +1,12 @@
-Add loader
 Add validation - email, phone, website
-Add hamberger menu
+Add hamburger menu
 Add interceptor
 Add api layer
 Add data model
 Add multi-routing
-
 Add configs for console debug
 Add source map
+
 Remove bundle.js from index.html
 
 Build scripts 
@@ -18,27 +17,23 @@ Build scripts
 Routing
 
 Service layer (tier)
+
  - Action (redux)
  - Ajax
- - Online(REST call) -stateful
+ - Online(REST call) - stateful
  - Offline(JSON file) - simulated with delay
 
-CRUD operations
+CRUD operations - 25 % done
  
-Layout
- - Progressive vs adaptive
+Layout  - Progressive vs adaptive
  
-Hamberger Menu
-
-Task Loader - called at start/end. never in app component --> DONE
+Task Loader - called at start/end. never in app component --> done
 
 Multi-language - no state loss / page refresh on switch
 
-Authentication
- - All urls
- - Restrict direct url access
+Authentication - All urls, Restrict direct url access
 
  Session 
  - InMemory - refresh
- - Persistant - close tab
+ - Persistent - close tab
  - Session -

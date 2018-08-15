@@ -9,7 +9,7 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".ts", ".tsx"]
-  }, // Tells Typescript to resolve the extensions thus we don't have to specify them on the import statements
+  },
   module: {
     rules: [{
         test: /\.tsx?$/,
