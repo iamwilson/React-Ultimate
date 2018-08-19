@@ -37,7 +37,7 @@ class EmployeeComponent extends React.Component<
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.addEmployee = this.addEmployee.bind(this);
+    this.addEmployeeHandler = this.addEmployeeHandler.bind(this);
   }
 
   componentDidMount() {
@@ -78,7 +78,7 @@ class EmployeeComponent extends React.Component<
 
   handleSubmit() {}
 
-  addEmployee() {}
+  addEmployeeHandler() {}
 
   render() {
     return (
@@ -94,10 +94,7 @@ class EmployeeComponent extends React.Component<
                 focus={true}
                 placeholder="Enter Name"
                 value={this.state.employee.name}
-                onChange={e => {
-                  this.handleChange(e);
-                }}
-              />
+                onChange={ this.handleChange } />
 
               <TextBoxComponent
                 label="Username:"
@@ -105,20 +102,14 @@ class EmployeeComponent extends React.Component<
                 type="text"
                 placeholder="Enter Username"
                 value={this.state.employee.username}
-                onChange={e => {
-                  this.handleChange(e);
-                }}
-              />
+                onChange={ this.handleChange } />
               <TextBoxComponent
                 label="Email:"
                 name="email"
                 type="text"
                 placeholder="Enter Email"
                 value={this.state.employee.email}
-                onChange={e => {
-                  this.handleChange(e);
-                }}
-              />
+                onChange={ this.handleChange } />
 
               <TextBoxComponent
                 label="Phone:"
@@ -126,10 +117,7 @@ class EmployeeComponent extends React.Component<
                 type="text"
                 placeholder="Enter Phone"
                 value={this.state.employee.phone}
-                onChange={e => {
-                  this.handleChange(e);
-                }}
-              />
+                onChange={ this.handleChange } />
 
               <TextBoxComponent
                 label="Website:"
@@ -137,10 +125,7 @@ class EmployeeComponent extends React.Component<
                 type="text"
                 placeholder="Enter Website"
                 value={this.state.employee.website}
-                onChange={e => {
-                  this.handleChange(e);
-                }}
-              />
+                onChange={ this.handleChange } />
 
               {this.state.isUpdate == true ? (
                 <button className="btn-save">Update</button>
@@ -148,7 +133,7 @@ class EmployeeComponent extends React.Component<
                 <button
                   className="btn-add"
                   type="submit"
-                  onClick={this.addEmployee}
+                  onClick={this.addEmployeeHandler}
                 >
                   Add
                 </button>
@@ -173,7 +158,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EmployeeComponent);
+export default connect(mapStateToProps, mapDispatchToProps) (EmployeeComponent);

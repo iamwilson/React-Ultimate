@@ -8,7 +8,7 @@ import * as employeeActions from '../../actions/employeeActions';
 
 
 interface IListComponentProps {
-  employees: any;
+  employeesResult: any;
   
   actions: any;
   history: any;
@@ -32,7 +32,7 @@ class ListComponent extends React.Component<IListComponentProps, IListComponentS
 
   componentDidMount() {
     this.props.actions.getEmployeesData().then(() => {
-      let employeesObject = this.props.employees.data;
+      let employeesObject = this.props.employeesResult.data;
       this.setState({ employees: employeesObject });
     });;
 
@@ -92,7 +92,7 @@ class ListComponent extends React.Component<IListComponentProps, IListComponentS
 
 const mapStateToProps = (state: any) => {
   return {
-    employees: state.employees
+    employeesResult: state.employees
   };
 };
 

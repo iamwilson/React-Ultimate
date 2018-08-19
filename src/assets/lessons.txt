@@ -49,3 +49,7 @@ this keyword - in JavaScript, class methods are not bound by default.
 Redux Thunk - When an action creator returns a function, that function will get executed by the Redux Thunk middleware
 Any time you attempt to dispatch a function instead of an action object, Redux Thunk middleware will call that function 
 with dispatch method itself as the first argument.
+
+props.children --> can be used to access not just properties but anything wrapped in between the element tags
+You can pass events as props to other components
+Inline styling using const style

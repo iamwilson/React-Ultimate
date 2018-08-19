@@ -1,3 +1,8 @@
+Add opacity for background div only
+Add Multi object
+Implement Offline
+Fix URL query string parameter - online
+
 Add validation - email, phone, website
 Add hamburger menu
 Add interceptor
@@ -37,3 +42,9 @@ Authentication - All urls, Restrict direct url access
  - InMemory - refresh
  - Persistent - close tab
  - Session -
+
+
+ done
+ =====
+
+ Add meta tags - done

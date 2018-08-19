@@ -12,15 +12,7 @@ class LoaderComponent extends React.Component<ILoaderProps> {
   componentDidMount() {}
 
   render() {
-    if (this.props.isLoading) {
-      return (
-        <div className="loader-container">
-          <div className="loader" />
-        </div>
-      );
-    } else {
-      return null;
-    }
+    return (this.props.isLoading) ? ( <div className="loader-container">  <div className="loader" /> </div> ) : null;
   }
 }
 
