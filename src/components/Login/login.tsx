@@ -21,15 +21,15 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
       passWord: ""
     };
 
-    this.submitLogin = this.submitLogin.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.loginHandler = this.loginHandler.bind(this);
+    this.changeHandler = this.changeHandler.bind(this);
   }
 
-  handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
+  changeHandler(e: React.ChangeEvent<HTMLInputElement>): void {
     this.setState({ [e.target.name]: e.target.value } as any);
   }
 
-  submitLogin() {
+  loginHandler() {
     setTimeout(() => { this.props.isAuthenticated(true); }, 500);
   }
 
@@ -44,7 +44,7 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
             focus={true}
             placeholder="Enter Username"
             value={this.state.userName}
-            onChange={this.handleChange}
+            onChange={this.changeHandler}
           />
           <TextBoxComponent
             label="Password"
@@ -52,9 +52,9 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
             type="password"
             placeholder="Enter Password"
             value={this.state.passWord}
-            onChange={this.handleChange}
+            onChange={this.changeHandler}
           />
-          <button onClick={this.submitLogin}>Login</button>
+          <button onClick={this.loginHandler}>Login</button>
         </div>
       </div>
     );

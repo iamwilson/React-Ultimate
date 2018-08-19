@@ -26,8 +26,8 @@ class ListComponent extends React.Component<IListComponentProps, IListComponentS
       employees: [],
     }
 
-    this.addEmployee = this.addEmployee.bind(this);
-    this.viewEmployee = this.viewEmployee.bind(this);
+    this.addEmployeeHandler = this.addEmployeeHandler.bind(this);
+    this.viewEmployeeHandler = this.viewEmployeeHandler.bind(this);
   }
 
   componentDidMount() {
@@ -38,11 +38,11 @@ class ListComponent extends React.Component<IListComponentProps, IListComponentS
 
   }
 
-  addEmployee() {
+  addEmployeeHandler() {
     this.props.history.push("/employee");
   }
 
-  viewEmployee(id: any) {
+  viewEmployeeHandler(id: any) {
     this.props.history.push("/employee/" + id);
   }
 
@@ -55,7 +55,7 @@ class ListComponent extends React.Component<IListComponentProps, IListComponentS
           <button
             className="btn-add"
             onClick={e => {
-              this.addEmployee();
+              this.addEmployeeHandler();
             }}
           >
             Add Employee
@@ -77,7 +77,7 @@ class ListComponent extends React.Component<IListComponentProps, IListComponentS
                   <td>{employee.username}</td>
                   <td>{employee.email}</td>
                   <td>
-                    <button className="btn-view" onClick={e => { this.viewEmployee(employee.id); }} > view </button>
+                    <button className="btn-view" onClick={e => { this.viewEmployeeHandler(employee.id); }} > view </button>
                     <button className="btn-delete">delete</button>
                   </td>
                 </tr>

@@ -35,8 +35,8 @@ class EmployeeComponent extends React.Component<
       isUpdate: false
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
+    this.changeHandler = this.changeHandler.bind(this);
     this.addEmployeeHandler = this.addEmployeeHandler.bind(this);
   }
 
@@ -64,7 +64,7 @@ class EmployeeComponent extends React.Component<
     // console.log("Did Update current", this.props.employeeDetails);
   }
 
-  handleChange(e: any) {
+  changeHandler(e: any) {
     let key = e.target.name;
     let value = e.target.value;
     let empObject: Employee = Object.assign({}, this.state.employee);
@@ -76,7 +76,7 @@ class EmployeeComponent extends React.Component<
     });
   }
 
-  handleSubmit() {}
+  submitHandler() {}
 
   addEmployeeHandler() {}
 
@@ -86,7 +86,7 @@ class EmployeeComponent extends React.Component<
         <h2 className="header-wrapper">Employee Details</h2>
         <div className="employee-wrapper">
           <div className="l-wrapper">
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.submitHandler}>
               <TextBoxComponent
                 label="Name:"
                 name="name"
@@ -94,7 +94,7 @@ class EmployeeComponent extends React.Component<
                 focus={true}
                 placeholder="Enter Name"
                 value={this.state.employee.name}
-                onChange={ this.handleChange } />
+                onChange={ this.changeHandler } />
 
               <TextBoxComponent
                 label="Username:"
@@ -102,14 +102,14 @@ class EmployeeComponent extends React.Component<
                 type="text"
                 placeholder="Enter Username"
                 value={this.state.employee.username}
-                onChange={ this.handleChange } />
+                onChange={ this.changeHandler } />
               <TextBoxComponent
                 label="Email:"
                 name="email"
                 type="text"
                 placeholder="Enter Email"
                 value={this.state.employee.email}
-                onChange={ this.handleChange } />
+                onChange={ this.changeHandler } />
 
               <TextBoxComponent
                 label="Phone:"
@@ -117,7 +117,7 @@ class EmployeeComponent extends React.Component<
                 type="text"
                 placeholder="Enter Phone"
                 value={this.state.employee.phone}
-                onChange={ this.handleChange } />
+                onChange={ this.changeHandler } />
 
               <TextBoxComponent
                 label="Website:"
@@ -125,7 +125,7 @@ class EmployeeComponent extends React.Component<
                 type="text"
                 placeholder="Enter Website"
                 value={this.state.employee.website}
-                onChange={ this.handleChange } />
+                onChange={ this.changeHandler } />
 
               {this.state.isUpdate == true ? (
                 <button className="btn-save">Update</button>

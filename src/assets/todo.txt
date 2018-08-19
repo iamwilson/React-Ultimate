@@ -1,7 +1,7 @@
 Add opacity for background div only
 Add Multi object
 Implement Offline
-Fix URL query string parameter - online
+Fix URL query string parameter - onlinez
 
 Add validation - email, phone, website
 Add hamburger menu
