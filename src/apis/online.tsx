@@ -1,15 +1,12 @@
 import axios from 'axios';
+import { config } from '../configs/config';
 
-const url = `https://jsonplaceholder.typicode.com/users/`;
+const url = config.url;
 
 export const getEmployees = () => {
   return axios.get(url);
 };
 
 export const getEmployee = (id: any) => {
-  return axios.get(url, {
-    params: {
-      id: id
-    }
-  });
+  return axios.get(url + id);
 };

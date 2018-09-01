@@ -1,12 +1,12 @@
 // base
-import * as React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 //
-import { Employee } from "../../models/employee";
-import TextBoxComponent from "../elements/textBox";
-import * as employeeActions from "../../actions/employeeActions";
+import { Employee } from '../../models/employee';
+import TextBoxComponent from '../elements/textBox';
+import * as employeeActions from '../../actions/employeeActions';
 
 interface IEmployeeComponentProps {
   employeeResult: any;
@@ -47,21 +47,14 @@ class EmployeeComponent extends React.Component<
       this.props.actions
         .getEmployeeData(this.props.match.params.id)
         .then(() => {
-          let employeeObject = this.props.employeeResult.data[0];
+          let employeeObject = this.props.employeeResult.data;
           this.setState({ isUpdate: true, employee: employeeObject });
         });
     }
   }
 
-  componentWillReceiveProps(nextProps: any) {
-    //let employeeObject = nextProps.employeeDetails.data[0];
-    //console.log("next props", employeeObject);
-    //this.setState({employee : employeeObject })
-  }
-
   componentDidUpdate(prevProps: any) {
     // console.log('did update previous', prevProps  )
-    // console.log("Did Update current", this.props.employeeDetails);
   }
 
   changeHandler(e: any) {

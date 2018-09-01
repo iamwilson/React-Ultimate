@@ -1,11 +1,10 @@
-import axios from 'axios';
-
-const url = ``;
+var employee = require('./mockData/employee.json');
+var employeesList = require('./mockData/employees.json');
 
 export const getEmployees = () => {
-  return axios.get(url);
+  return employeesList;
 };
 
-export const getEmployee = () => {
-  return axios.get(url);
+export const getEmployee = (id : any) => {
+  return employee;
 };

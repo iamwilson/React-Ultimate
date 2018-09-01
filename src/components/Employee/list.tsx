@@ -36,6 +36,9 @@ class ListComponent extends React.Component<IListComponentProps, IListComponentS
       this.setState({ employees: employeesObject });
     });;
 
+     // this.setState({ employees: this.props.actions.getEmployeesData() });
+    
+
   }
 
   addEmployeeHandler() {
