@@ -1,8 +1,24 @@
 @import 'variables.scss';
 
+@import './about/about.scss';
+
+@import './common/header.scss';
+@import './common/footer.scss';
+
+@import './elements/button.scss';
+@import './elements/loader.scss';
+
+@import './employee/employee.scss';
+@import './employee/list.scss';
+
+@import './login/login.scss';
+
 body {
     margin: 0px;
-    padding: 0px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
     font-family: $general_font;
     background-color: $background_color;
 }
