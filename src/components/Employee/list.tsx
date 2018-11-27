@@ -70,6 +70,8 @@ class ListComponent extends React.Component<IListComponentProps, IListComponentS
                 <th>Name</th>
                 <th>Username</th>
                 <th>Email</th>
+                <th>Phone</th>
+                <th>Website</th>
                 <th>Actions</th>
               </tr>
 
@@ -79,6 +81,8 @@ class ListComponent extends React.Component<IListComponentProps, IListComponentS
                   <td>{employee.name}</td>
                   <td>{employee.username}</td>
                   <td>{employee.email}</td>
+                  <td>{employee.phone}</td>
+                  <td>{employee.website}</td>
                   <td>
                     <button className="btn-view" onClick={e => { this.viewEmployeeHandler(employee.id); }} > view </button>
                     <button className="btn-delete">delete</button>

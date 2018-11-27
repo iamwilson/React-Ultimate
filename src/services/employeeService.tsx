@@ -1,10 +1,16 @@
 import axios from 'axios';
 import { config } from '../configs/config';
+import * as mockService from '../services/mock/employeeService';
 
 const url = config.url;
 
 export const getEmployees = () => {
-  return axios.get(url);
+  if (config.mode === 'online'){
+    return axios.get(url);
+  } else{
+    return mockService.getEmployees();
+  }
+  
 };
 
 export const getEmployee = (id: any) => {

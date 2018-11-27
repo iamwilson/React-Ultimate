@@ -1,5 +1,6 @@
-import * as api from "../apis/api";
+// base 
 import * as types from "../constants/actionTypes";
+import * as api from "../services/employeeService";
 
 const beginApiCall = () => ({
   type: types.BEGIN_API_CALL
@@ -33,7 +34,6 @@ export const getEmployeesData = () => {
   return (dispatch: any) => {
     dispatch(beginApiCall());
     return api
-      .Api()
       .getEmployees()
       .then(response => {
         dispatch(getEmployeesSuccess(response));
@@ -49,7 +49,6 @@ export const getEmployeeData = (id: any) => {
   return (dispatch: any) => {
     dispatch(beginApiCall());
     return api
-      .Api()
       .getEmployee(id)
       .then(response => {
         dispatch(getEmployeeSuccess(response));

@@ -53,10 +53,6 @@ class EmployeeComponent extends React.Component<
     }
   }
 
-  componentDidUpdate(prevProps: any) {
-    // console.log('did update previous', prevProps  )
-  }
-
   changeHandler(e: any) {
     let key = e.target.name;
     let value = e.target.value;

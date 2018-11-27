@@ -24,7 +24,7 @@ class App extends React.Component<IAppProps, IAppState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      loginSuccess: false
+      loginSuccess: true
     };
 
     this.isAuthenticated = this.isAuthenticated.bind(this);
