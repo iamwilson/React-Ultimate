@@ -14,30 +14,47 @@ interface IEmployeeComponentProps {
   match: any;
   actions: any;
   result: any;
-  response: any;
-  isUpdate: boolean;
+
 }
 
 interface IEmployeeComponentState {
   employee: Employee;
   isUpdate: boolean;
+  isFormValid: boolean;
+
+  isNameValid: boolean; 
+  
+  nameError: string;
+  usernameError: string;
+  emailError: string;
+  phoneError: string;
+  websiteError: string;
+
 }
 
-class EmployeeComponent extends React.Component<
-  IEmployeeComponentProps,
-  IEmployeeComponentState
-> {
+class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmployeeComponentState> {
+
   constructor(props: any) {
     super(props);
 
     this.state = {
+
       employee: new Employee(),
-      isUpdate: false
+      isUpdate: false,
+      isFormValid: false,
+      isNameValid: false,
+
+      nameError: '',
+      usernameError: '',
+      emailError: '',
+      phoneError: '',
+      websiteError: '',
+
     };
 
     this.submitHandler = this.submitHandler.bind(this);
     this.changeHandler = this.changeHandler.bind(this);
-    this.addEmployeeHandler = this.addEmployeeHandler.bind(this);
+    
   }
 
   componentDidMount() {
@@ -56,13 +73,32 @@ class EmployeeComponent extends React.Component<
   changeHandler(e: any) {
     let key = e.target.name;
     let value = e.target.value;
-    let empObject: Employee = Object.assign({}, this.state.employee);
 
+    this.validateFields(key, value);
+
+
+    let empObject: Employee = Object.assign({}, this.state.employee);
     empObject[key] = value;
 
-    this.setState({ employee: empObject }, () => {
-      console.log(this.state.employee);
-    });
+    this.setState({ employee: empObject });
+  }
+
+  nameFieldError: string = "Please enter name";
+  
+  validateFields(key, value){
+
+    let error;
+
+    switch(key){
+      case 'name':
+          error = (value.length < 4) ? this.nameFieldError : '';
+        break;
+      default: break;
+    }
+
+    this.setState({nameError : error});
+    
+
   }
 
   submitHandler() {}
@@ -83,6 +119,7 @@ class EmployeeComponent extends React.Component<
                 focus={true}
                 placeholder="Enter Name"
                 value={this.state.employee.name}
+                error = {this.state.nameError}
                 onChange={ this.changeHandler } />
 
               <TextBoxComponent
@@ -91,13 +128,16 @@ class EmployeeComponent extends React.Component<
                 type="text"
                 placeholder="Enter Username"
                 value={this.state.employee.username}
+                error = {this.state.usernameError}
                 onChange={ this.changeHandler } />
+
               <TextBoxComponent
                 label="Email:"
                 name="email"
                 type="text"
                 placeholder="Enter Email"
                 value={this.state.employee.email}
+                error = {this.state.emailError}
                 onChange={ this.changeHandler } />
 
               <TextBoxComponent
@@ -106,6 +146,7 @@ class EmployeeComponent extends React.Component<
                 type="text"
                 placeholder="Enter Phone"
                 value={this.state.employee.phone}
+                error = {this.state.phoneError}
                 onChange={ this.changeHandler } />
 
               <TextBoxComponent
@@ -114,18 +155,13 @@ class EmployeeComponent extends React.Component<
                 type="text"
                 placeholder="Enter Website"
                 value={this.state.employee.website}
+                error = {this.state.websiteError}
                 onChange={ this.changeHandler } />
 
               {this.state.isUpdate == true ? (
                 <button className="btn-save">Update</button>
               ) : (
-                <button
-                  className="btn-add"
-                  type="submit"
-                  onClick={this.addEmployeeHandler}
-                >
-                  Add
-                </button>
+                <button className="btn-add" type="submit">Add </button>
               )}
             </form>
           </div>

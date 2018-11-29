@@ -7,6 +7,7 @@ interface ITextboxProps {
   value: string;
   focus?: boolean;
   placeholder?: string;
+  error?: string;
   onChange?: (event: any) => void;
 }
 
@@ -15,6 +16,7 @@ class TextBoxComponent extends React.Component<ITextboxProps> {
     return (
       <div>
         <label>{this.props.label}</label>
+        <label className="alert-error">{this.props.error}</label>
         <input
           name={this.props.name}
           type={this.props.type}
