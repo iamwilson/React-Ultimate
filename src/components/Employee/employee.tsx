@@ -98,7 +98,6 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
 
     this.setState({nameError : error});
     
-
   }
 
   submitHandler() {}

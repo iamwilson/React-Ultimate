@@ -1,8 +1,8 @@
-ReactDOM
+ReactDOM - done
 Props - done
 State (setState) - done
 Stateful (class) & stateless (function) - done
-Lifecycle methods (constructor, render, componentDidmMount) - done
+Lifecycle methods (constructor, render, componentDidMount) - done
 Passing data between components - done
 Events - done
 Passing arguments to Event handlers - done
@@ -13,6 +13,9 @@ Routing - done
 Redux - done
 Services - done
 
+React Fragments -
+ComponentDidCatch - 
+
 Container x Presenter paradigm
 Code splitting
 Swagger
@@ -21,12 +24,10 @@ Testing
 PWA
 Web worker
 Service worker
-Cordova
 Named exports
 Synthetic events
-controlled components
-uncontrolled components
 
+props and state changes - trigger a render update
 
 setState - async
 state - local state of the component, cannot be accessed & modified outside the component. only be used & modified inside the component.
@@ -50,6 +51,5 @@ Redux Thunk - When an action creator returns a function, that function will get 
 Any time you attempt to dispatch a function instead of an action object, Redux Thunk middleware will call that function 
 with dispatch method itself as the first argument.
 
-props.children --> can be used to access not just properties but anything wrapped in between the element tags
-You can pass events as props to other components
-Inline styling using const style
+-- Stateless Component vs Pure Component
+-- 

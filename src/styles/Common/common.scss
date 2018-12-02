@@ -1,5 +1,13 @@
-.alert-error{
-    float: right;
+.alert-danger {
     color: red;
+    float: right;
+    font-size: 14px;
+}
+
+.input-field {
+    margin: 2px 0px 16px 0px;
+}
+
+.input-label{
     font-size: 14px;
 }

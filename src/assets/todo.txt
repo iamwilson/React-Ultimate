@@ -1,50 +1,49 @@
-Add data model - 25% done
-Implement Offline - 25% done
-Add validation - email, phone, website
+Add mock data & service --> done
+Add validation - email, phone, website --> done
+Add validation utility --> done
+Use only one field for validating error messages --> done
 
-Add opacity for background div only
+Add Hamburger Menu -->
 
-Add hamburger menu
-Add interceptor
+Add Authentication + Login -->
+Add Interceptor
+Add Multi-language
+Add Multi-routing
+Abstract api calls -->
+ 
+Mutate table to card(s) view for mobile
 
-Add api layer
-
-Add multi-routing
-Add configs for console debug
-
-Add source map
+Add meta tags
+Add Build scripts
+Add React configs for console debug
+Add opacity for loader
+Add Source map
 Remove bundle.js from index.html
 
 Build scripts 
  - Dev - webpack dev server
  - Offline - looks like prod but contains no JSON
  - Prod - uglified, content slicing (font & images)
- 
-Routing
 
-Service layer (tier) - 75% done
+Layout - Adaptive vs Progressive (aim)
 
- - Action (redux) - done
- - Ajax - done
- - Online(REST call) - stateful - done
- - Offline(JSON file) - simulated with delay
-
-CRUD operations - 25 % done
- 
-Layout  - Progressive vs adaptive
- 
 Multi-language - no state loss / page refresh on switch
 
 Authentication - All urls, Restrict direct url access
 
-Implement Session management
-
+ Session 
  - InMemory - refresh
  - Persistent - close tab
  - Session -
 
- Done
- =====
+Routing --> 50% done
 
- Add meta tags - done
- Task Loader - called at start/end. never in app component
+Service layer (tier) --> 75% done
+
+ - Ajax (swagger generated)
+ - Action (redux) --> done
+ - Online(REST call) - stateful --> done
+ - Offline(JSON file) - simulated with delay --> done
+
+CRUD operations - 75 % done
+Task Loader --> done

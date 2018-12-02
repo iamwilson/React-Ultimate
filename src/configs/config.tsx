@@ -4,6 +4,6 @@ export const OFFLINE = 'offline';
 export const URL = `https://jsonplaceholder.typicode.com/users/`;
 
 export const config = {
-  mode: OFFLINE,
+  mode: ONLINE,
   url: URL
 };

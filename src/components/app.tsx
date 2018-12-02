@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 // components
-import ListComponent from './employee/list';
+import ListComponent from './employee/employeeList';
 import LoginComponent from './login/login';
 import AboutComponent from './about/about';
 import HeaderComponent from './common/header';

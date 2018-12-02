@@ -1,0 +1,110 @@
+.w3-sidebar {
+    height: 100%;
+    width: 240px;
+    background-color: #fff;
+    position: fixed !important;
+    z-index: 1;
+    overflow: auto;
+    border-right: 1px solid #ccc !important
+}
+
+.w3-bar-block .w3-button {
+    width: 100%;
+    text-align: left;
+    padding: 8px 16px
+}
+
+
+.w3-bar-block .w3-bar-item {
+    width: 100%;
+    display: block;
+    padding: 8px 16px;
+    text-align: left;
+    border: none;
+    white-space: normal;
+    float: none;
+    outline: 0
+}
+
+.w3-bar-item {
+    padding: 8px 16px;
+    float: left;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0
+}
+
+.w3-large {
+    font-size: 18px !important
+}
+
+.w3-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap
+}
+
+.w3-button :disabled {
+    cursor: not-allowed;
+    opacity: 0.3
+}
+
+.w3-disabled *,
+:disabled * {
+    pointer-events: none
+}
+
+.w3-button:first-child,
+.w3-dropdown-click:hover>.w3-button:first-child {
+    background-color: #ccc;
+    color: #000
+}
+
+.w3-button,
+.w3-bar-block .w3-dropdown-click .w3-button {
+    width: 100%;
+    text-align: left;
+    padding: 8px 16px
+}
+
+.w3-button {
+    white-space: normal
+}
+
+.w3-button {
+    width: 100%
+}
+
+.w3-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap
+}
+
+.w3-teal,
+.w3-hover-teal:hover {
+    color: #fff !important;
+    background-color: #009688 !important
+}
+
+.w3-xlarge {
+    font-size: 24px !important
+}
+
