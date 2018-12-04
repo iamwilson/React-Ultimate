@@ -36,9 +36,10 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
   render() {
     return (
       <div className="login-container">
+      <div className="login-logo">EMS</div>
         <div className="login-wrapper">
           <TextBoxComponent
-            label="Username"
+            label="Username:"
             name="userName"
             type="text"
             focus={true}
@@ -47,7 +48,7 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
             onChange={this.changeHandler}
           />
           <TextBoxComponent
-            label="Password"
+            label="Password:"
             name="passWord"
             type="password"
             placeholder="Enter Password"

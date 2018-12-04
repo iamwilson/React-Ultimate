@@ -2,7 +2,7 @@ ReactDOM - done
 Props - done
 State (setState) - done
 Stateful (class) & stateless (function) - done
-Lifecycle methods (constructor, render, componentDidMount) - done
+Life cycle methods (constructor, render, componentDidMount) - done
 Passing data between components - done
 Events - done
 Passing arguments to Event handlers - done

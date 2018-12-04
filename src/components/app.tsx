@@ -24,7 +24,7 @@ class App extends React.Component<IAppProps, IAppState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      loginSuccess: true
+      loginSuccess: false
     };
 
     this.isAuthenticated = this.isAuthenticated.bind(this);
@@ -55,7 +55,7 @@ class App extends React.Component<IAppProps, IAppState> {
   }
 }
 
-function mapStateToProps(state: any) {
+const mapStateToProps=(state: any) =>{
   return {
     isLoading: state.isLoading
   };
