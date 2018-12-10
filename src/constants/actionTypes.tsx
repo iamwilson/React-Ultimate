@@ -1,8 +1,9 @@
 export const BEGIN_API_CALL = "BEGIN_API_CALL";
 export const END_API_CALL = "END_API_CALL";
 
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAILURE = "LOGIN_FAILURE";
+export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
+export const LOG_IN_ERROR = "LOG_IN_ERROR";
+export const LOG_OUT_USER = "LOG_OUT_USER";
 
 export const GET_EMPLOYEE_SUCCESS = "GET_EMPLOYEE_SUCCESS";
 export const GET_EMPLOYEE_ERROR = "GET_EMPLOYEE_ERROR";

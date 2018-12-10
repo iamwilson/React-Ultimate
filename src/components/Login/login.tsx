@@ -1,65 +1,151 @@
 // base
-import * as React from 'react';
 
-// components
-import TextBoxComponent from '../elements/textBox';
+import * as React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+// misc
+
+import { Credentials } from "../../models/credentials";
+import TextBoxComponent from "../elements/textBox";
+import * as validation from "../../utils/validations";
+import * as userActions from "../../actions/userActions";
 
 interface ILoginComponentProps {
-  isAuthenticated: (value: boolean) => void;
+  loginResult: any;
+  actions: any;
 }
 
 interface ILoginComponentState {
-  userName: string;
-  passWord: string;
+  credentials: Credentials;
+  errors: Credentials;
 }
 
-class LoginComponent extends React.Component<ILoginComponentProps, ILoginComponentState> {
+class LoginComponent extends React.Component<
+  ILoginComponentProps,
+  ILoginComponentState
+> {
   constructor(props: ILoginComponentProps) {
     super(props);
+
     this.state = {
-      userName: "",
-      passWord: ""
+      credentials: new Credentials(),
+
+      errors: new Credentials()
     };
 
-    this.loginHandler = this.loginHandler.bind(this);
-    this.changeHandler = this.changeHandler.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  changeHandler(e: React.ChangeEvent<HTMLInputElement>): void {
-    this.setState({ [e.target.name]: e.target.value } as any);
+  handleChange(e: any) {
+    let key = e.target.name;
+
+    let value = e.target.value;
+
+    this.validateFields(key, value);
+
+    let credentialsObject: Credentials = Object.assign(
+      {},
+      this.state.credentials
+    );
+
+    credentialsObject[key] = value;
+
+    this.setState({ credentials: credentialsObject });
   }
 
-  loginHandler() {
-    setTimeout(() => { this.props.isAuthenticated(true); }, 500);
+  validateFields(key: any, value: any) {
+    let errors = new Credentials();
+
+    switch (key) {
+      case "username":
+        if (!validation.IsInputNotNull(value))
+          errors.userName = "Please enter username";
+
+        break;
+
+      case "password":
+        if (!validation.IsInputNotNull(value))
+          errors.passWord = "Please enter password";
+
+        break;
+
+      default:
+        break;
+    }
+
+    const errorObject = { ...this.state.errors, [key]: errors[key] };
+
+    this.setState({ errors: errorObject });
+  }
+
+  handleLogin() {
+    this.props.actions.loginUser(this.state.credentials);
   }
 
   render() {
+    const areEmpty = Object.keys(this.state.credentials).some(
+      key => this.state.credentials[key] === ""
+    );
+
+    const hasError = Object.keys(this.state.errors).some(
+      key => this.state.errors[key] !== ""
+    );
+
     return (
       <div className="login-container">
-      <div className="login-logo">EMS</div>
+        <div className="login-welcome">EMS</div>
+
         <div className="login-wrapper">
           <TextBoxComponent
             label="Username:"
-            name="userName"
+            name="username"
             type="text"
             focus={true}
             placeholder="Enter Username"
-            value={this.state.userName}
-            onChange={this.changeHandler}
+            value={this.state.credentials.userName}
+            error={this.state.errors.userName}
+            onChange={this.handleChange}
           />
+
           <TextBoxComponent
             label="Password:"
-            name="passWord"
+            name="password"
             type="password"
             placeholder="Enter Password"
-            value={this.state.passWord}
-            onChange={this.changeHandler}
+            value={this.state.credentials.passWord}
+            error={this.state.errors.passWord}
+            onChange={this.handleChange}
           />
-          <button onClick={this.loginHandler}>Login</button>
+
+          <button
+            className="btn btn-login"
+            disabled={hasError || areEmpty}
+            onClick={this.handleLogin}
+          >
+            Login
+          </button>
         </div>
       </div>
     );
   }
 }
 
-export default LoginComponent;
+const mapStateToProps = (state: any) => {
+  return {
+    loginResult: state.user
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    actions: bindActionCreators(userActions, dispatch)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginComponent);
