@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import * as types from "../constants/actionTypes";
-import * as api from "../services/authenticationService";
+import * as api from "../services/loginService";
 import { Credentials } from "../models/credentials";
 
 const loginSuccess = (token: any) => ({
@@ -19,20 +19,19 @@ const logout = () => ({
   type: types.LOG_OUT_USER
 });
 
-// export const loginUser = (credentials: Credentials) => {
-//   return (dispatch: any) => {
-//     return api
-//       .AuthenticateUser(credentials)
+export const loginUser = (credentials: Credentials) => {
+  return (dispatch: any) => {
+    return api
+      .AuthenticateUser(credentials)
+      .then((response: AxiosResponse) => {
+        dispatch(loginSuccess(response));
+      })
 
-//       .then((response: AxiosResponse) => {
-//         dispatch(loginSuccess(response));
-//       })
-
-//       .catch((error: any) => {
-//         dispatch(loginError(error));
-//       });
-//   };
-// };
+      .catch((error: any) => {
+        dispatch(loginError(error));
+      });
+  };
+};
 
 export const logoutUser = () => {
   return (dispatch: any) => {

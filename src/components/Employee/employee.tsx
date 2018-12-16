@@ -10,7 +10,6 @@ import * as employeeActions from '../../actions/employeeActions';
 
 interface IEmployeeComponentProps {
   employeeResult: any;
-
   match: any;
   actions: any;
   result: any;
@@ -19,17 +18,9 @@ interface IEmployeeComponentProps {
 
 interface IEmployeeComponentState {
   employee: Employee;
+  errors: Employee;
   isUpdate: boolean;
-  isFormValid: boolean;
-
-  isNameValid: boolean; 
   
-  nameError: string;
-  usernameError: string;
-  emailError: string;
-  phoneError: string;
-  websiteError: string;
-
 }
 
 class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmployeeComponentState> {
@@ -40,15 +31,8 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
     this.state = {
 
       employee: new Employee(),
-      isUpdate: false,
-      isFormValid: false,
-      isNameValid: false,
-
-      nameError: '',
-      usernameError: '',
-      emailError: '',
-      phoneError: '',
-      websiteError: '',
+      errors: new Employee(),
+      isUpdate: false
 
     };
 
@@ -96,7 +80,7 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
       default: break;
     }
 
-    this.setState({nameError : error});
+    this.setState({errors : error});
     
   }
 
@@ -118,7 +102,7 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
                 focus={true}
                 placeholder="Enter Name"
                 value={this.state.employee.name}
-                error = {this.state.nameError}
+                error = {this.state.errors.name}
                 onChange={ this.changeHandler } />
 
               <TextBoxComponent
@@ -127,7 +111,7 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
                 type="text"
                 placeholder="Enter Username"
                 value={this.state.employee.username}
-                error = {this.state.usernameError}
+                error = {this.state.errors.username}
                 onChange={ this.changeHandler } />
 
               <TextBoxComponent
@@ -136,7 +120,7 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
                 type="text"
                 placeholder="Enter Email"
                 value={this.state.employee.email}
-                error = {this.state.emailError}
+                error = {this.state.errors.email}
                 onChange={ this.changeHandler } />
 
               <TextBoxComponent
@@ -145,7 +129,7 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
                 type="text"
                 placeholder="Enter Phone"
                 value={this.state.employee.phone}
-                error = {this.state.phoneError}
+                error = {this.state.errors.phone}
                 onChange={ this.changeHandler } />
 
               <TextBoxComponent
@@ -154,7 +138,7 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
                 type="text"
                 placeholder="Enter Website"
                 value={this.state.employee.website}
-                error = {this.state.websiteError}
+                error = {this.state.errors.website}
                 onChange={ this.changeHandler } />
 
               {this.state.isUpdate == true ? (

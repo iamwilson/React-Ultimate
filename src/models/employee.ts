@@ -7,7 +7,6 @@ export class Employee {
   website: string;
 
   constructor() {
-    this.id = "";
     this.name = "";
     this.username = "";
     this.email = "";

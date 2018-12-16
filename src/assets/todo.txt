@@ -5,7 +5,7 @@ Add mock data & service --> done
 Add validation - email, phone, website --> done
 Use only one field for validating error messages --> done
 
-Add Login -->
+Add Login --> done
 Add Interceptor -->
 Add Multi-language -->
 Add Multi-routing -->

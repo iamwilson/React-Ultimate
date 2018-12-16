@@ -3,8 +3,6 @@ export const initialState: any = {
   employee: {},
   isLoading: 0,
   user: {
-    token: {},
-    credentials: {},
     isAuthenticated: false
   },
   error: {}

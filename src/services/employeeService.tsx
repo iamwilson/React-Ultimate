@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { config } from '../configs/config';
-import * as mockService from '../services/mock/employeeService';
+import * as mockService from './mock/mockService';
 
 const url = config.url;
 
