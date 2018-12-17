@@ -1,30 +1,33 @@
 // base
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import * as React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import { Employee } from '../../models/employee';
-import * as employeeActions from '../../actions/employeeActions';
-
+import { Employee } from "../../models/employee";
+import * as employeeActions from "../../actions/employeeActions";
+import * as interceptor from "../../utils/interceptor";
 
 interface IListComponentProps {
   employeesResult: any;
-  
+
   actions: any;
   history: any;
 }
 
 interface IListComponentState {
-   employees: Array<Employee>;
+  employees: Array<Employee>;
 }
 
-class ListComponent extends React.Component<IListComponentProps, IListComponentState> {
+class ListComponent extends React.Component<
+  IListComponentProps,
+  IListComponentState
+> {
   constructor(props: IListComponentProps) {
     super(props);
 
     this.state = {
-      employees: [],
-    }
+      employees: []
+    };
 
     this.addEmployeeHandler = this.addEmployeeHandler.bind(this);
     this.viewEmployeeHandler = this.viewEmployeeHandler.bind(this);
@@ -32,13 +35,13 @@ class ListComponent extends React.Component<IListComponentProps, IListComponentS
 
   componentDidMount() {
     this.props.actions.getEmployeesData().then(() => {
-      let employeesObject = this.props.employeesResult.data;
-      this.setState({ employees: employeesObject });
-    });;
-
-     // this.setState({ employees: this.props.actions.getEmployeesData() });
-    
-
+      interceptor.responseInterceptor(this.props.employeesResult,
+        (employees: any) => {
+          this.setState({ employees: employees });
+        },
+        error => {}
+      );
+    });
   }
 
   addEmployeeHandler() {
@@ -50,7 +53,6 @@ class ListComponent extends React.Component<IListComponentProps, IListComponentS
   }
 
   render() {
-
     return (
       <div className="list-container">
         <h2 className="header-wrapper">Employee List</h2>
@@ -84,7 +86,15 @@ class ListComponent extends React.Component<IListComponentProps, IListComponentS
                   <td>{employee.phone}</td>
                   <td>{employee.website}</td>
                   <td>
-                    <button className="btn-view" onClick={e => { this.viewEmployeeHandler(employee.id); }} > view </button>
+                    <button
+                      className="btn-view"
+                      onClick={e => {
+                        this.viewEmployeeHandler(employee.id);
+                      }}
+                    >
+                      {" "}
+                      view{" "}
+                    </button>
                     <button className="btn-delete">delete</button>
                   </td>
                 </tr>
@@ -109,4 +119,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(mapStateToProps,  mapDispatchToProps)(ListComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ListComponent);
