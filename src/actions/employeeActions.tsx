@@ -1,61 +1,46 @@
 // base 
 import * as types from "../constants/actionTypes";
 import * as api from "../services/employeeService";
-
-const beginApiCall = () => ({
-  type: types.BEGIN_API_CALL
-});
-
-const endApiCall = () => ({
-  type: types.END_API_CALL
-});
-
-const getEmployeesSuccess = (employees: any) => ({
-  type: types.GET_EMPLOYEES_SUCCESS,
-  employees: employees
-});
-
-const getEmployeesError = (error: any) => ({
-  type: types.GET_EMPLOYEES_ERROR,
-  error: error
-});
-
-const getEmployeeSuccess = (employee: any) => ({
-  type: types.GET_EMPLOYEE_SUCCESS,
-  employee: employee
-});
-
-const getEmployeeError = (error: any) => ({
-  type: types.GET_EMPLOYEE_ERROR,
-  error: error
-});
+import * as commonActions from '../actions/commonActions';
 
 export const getEmployeesData = () => {
   return (dispatch: any) => {
-    dispatch(beginApiCall());
+    dispatch(commonActions.beginApiCall());
     return api
       .getEmployees()
       .then(response => {
-        dispatch(getEmployeesSuccess(response));
-        dispatch(endApiCall());
+        dispatch({
+          type: types.GET_EMPLOYEES_SUCCESS,
+          employees: response
+        });
+        dispatch(commonActions.endApiCall());
       })
       .catch((error: any) => {
-        dispatch(getEmployeesError(error));
+        dispatch({
+          type: types.GET_EMPLOYEES_ERROR,
+          error: error
+        });
       });
   };
 };
 
 export const getEmployeeData = (id: any) => {
   return (dispatch: any) => {
-    dispatch(beginApiCall());
+    dispatch(commonActions.beginApiCall());
     return api
       .getEmployee(id)
       .then(response => {
-        dispatch(getEmployeeSuccess(response));
-        dispatch(endApiCall());
+        dispatch({
+          type: types.GET_EMPLOYEE_SUCCESS,
+          employee: response
+        });
+        dispatch(commonActions.endApiCall());
       })
       .catch((error: any) => {
-        dispatch(getEmployeeError(error));
+        dispatch({
+          type: types.GET_EMPLOYEE_ERROR,
+          error: error
+        });
       });
   };
 };
