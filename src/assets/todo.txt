@@ -33,7 +33,6 @@ Authentication - All urls, Restrict direct url access
  Session 
  - InMemory - refresh
  - Persistent - close tab
- - Session -
 
 Routing --> 50% done
 
