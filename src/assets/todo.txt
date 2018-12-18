@@ -4,21 +4,21 @@ Add validation utility --> done
 Add mock data & service --> done
 Add validation - email, phone, website --> done
 Use only one field for validating error messages --> done
-
 Add Login --> done
-Add Interceptor -->
-Add Multi-language -->
-Add Multi-routing -->
-Add Hamburger Menu -->
-Add opacity for loader -->
+Add Interceptor --> done
+Add Hamburger Menu --> done
+Abstract api calls --> done
+
 
 Mutate table to card(s) view for mobile -->
-Abstract api calls -->
+Add Multi-language -->
+Add Multi-routing -->
+Add opacity for loader -->
 
-Add Build scripts -->
+
 Add Source map -->
+Add Build scripts -->
 Remove bundle.js from index.html
-
 Add React configs for console debug -->
 
 Build scripts 
@@ -31,7 +31,6 @@ Multi-language - no state loss / page refresh on switch
 Authentication - All urls, Restrict direct url access
 
  Session 
- 
  - InMemory - refresh
  - Persistent - close tab
  - Session -
@@ -46,4 +45,3 @@ Service layer (tier) --> 75% done
  - Offline(JSON file) - simulated with delay --> done
 
 CRUD operations - 75 % done
-

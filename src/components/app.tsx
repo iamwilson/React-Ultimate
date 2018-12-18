@@ -1,5 +1,4 @@
 // base
-
 import * as React from "react";
 import { connect } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
@@ -20,25 +19,33 @@ interface IAppProps {
 
 interface IAppState {
   loginSuccess: boolean;
+  openSideBar: boolean;
 }
 
 class App extends React.Component<IAppProps, IAppState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      loginSuccess: false
+      loginSuccess: false,
+      openSideBar: false
     };
     this.logOut = this.logOut.bind(this);
+    this.openSideBar = this.openSideBar.bind(this);
   }
 
   logOut(e: any) {}
+
+  openSideBar() {
+    let isOpen = this.state.openSideBar == false ? true : false;
+    this.setState({ openSideBar: isOpen });
+  }
 
   render() {
     if (this.props.isAuthenticated) {
       return (
         <div>
-          {/* <SidePanelComponent /> */}
-          <HeaderComponent/>
+          <SidePanelComponent sideBarOpen={this.state.openSideBar} />
+          <HeaderComponent openSideBar={this.openSideBar} onLogOutClick={this.logOut}/>
           <LoaderComponent isLoading={this.props.isLoading > 0} />
           <Switch>
             <Route exact path="/" component={EmployeeListComponent} />
@@ -57,7 +64,7 @@ class App extends React.Component<IAppProps, IAppState> {
 const mapStateToProps = (state: any) => {
   return {
     isLoading: state.isLoading,
-    isAuthenticated: state.user.isAuthenticated,
+    isAuthenticated: state.user.isAuthenticated
   };
 };
 
