@@ -13,6 +13,8 @@ import * as userActions from "../../actions/userActions";
 
 interface ILoginComponentProps {
   actions: any;
+  loginResult: any;
+
 }
 
 interface ILoginComponentState {
@@ -69,14 +71,21 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
   }
 
   handleLogin() {
-    this.props.actions.loginUser(this.state.credentials);
-  }
 
+    this.props.actions.loginUser(this.state.credentials).then(() =>{
+
+      // console.log(this.props.loginResult);
+    });
+    
+    
+  }
+  
   render() {
     const areEmpty = Object.keys(this.state.credentials).some(key => this.state.credentials[key] === "");
     const hasError = Object.keys(this.state.errors).some(key => this.state.errors[key] !== "");
 
-    return (
+    return (    
+
       <div className="login-container">
         <div className="login-welcome">EMS</div>
 
@@ -109,6 +118,11 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
   }
 }
 
+const mapStateToProps =(state: any) => {
+  return {
+    loginResult: state.user
+  }
+}
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
@@ -116,4 +130,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(LoginComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);

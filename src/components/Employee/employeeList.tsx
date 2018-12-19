@@ -9,6 +9,7 @@ import * as interceptor from "../../utils/interceptor";
 
 interface IListComponentProps {
   employeesResult: any;
+  store: any;
 
   actions: any;
   history: any;
@@ -35,7 +36,8 @@ class ListComponent extends React.Component<
 
   componentDidMount() {
     this.props.actions.getEmployeesData().then(() => {
-      interceptor.responseInterceptor(this.props.employeesResult,
+      interceptor.responseInterceptor(
+        this.props.employeesResult,
         (employees: any) => {
           this.setState({ employees: employees });
         },
@@ -50,6 +52,9 @@ class ListComponent extends React.Component<
 
   viewEmployeeHandler(id: any) {
     this.props.history.push("/employee/" + id);
+
+    // console.log(this.props.store);
+    
   }
 
   render() {
@@ -78,7 +83,10 @@ class ListComponent extends React.Component<
               </tr>
 
               {this.state.employees.map((employee: Employee, index) => (
-                <tr key={index}>
+                <tr
+                  key={index}
+                  onClick={e => this.viewEmployeeHandler(employee.id)}
+                >
                   <td>{employee.id}</td>
                   <td>{employee.name}</td>
                   <td>{employee.username}</td>
@@ -86,15 +94,6 @@ class ListComponent extends React.Component<
                   <td>{employee.phone}</td>
                   <td>{employee.website}</td>
                   <td>
-                    <button
-                      className="btn-view"
-                      onClick={e => {
-                        this.viewEmployeeHandler(employee.id);
-                      }}
-                    >
-                      {" "}
-                      view{" "}
-                    </button>
                     <button className="btn-delete">delete</button>
                   </td>
                 </tr>
@@ -109,7 +108,8 @@ class ListComponent extends React.Component<
 
 const mapStateToProps = (state: any) => {
   return {
-    employeesResult: state.employees
+    employeesResult: state.employees,
+    store: state
   };
 };
 
@@ -119,4 +119,7 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListComponent);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListComponent);

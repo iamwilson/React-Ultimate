@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 interface IHeaderProps {
   onLogOutClick: (e: any) => void;
   openSideBar: (e: any) => void;
+  showHeader?: any;
 }
 
 const HeaderComponent: React.SFC<IHeaderProps> = (props: IHeaderProps) => {

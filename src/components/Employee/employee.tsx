@@ -43,14 +43,11 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
 
   componentDidMount() {
     let isAdd = this.props.match.params.id === undefined ? false : true;
-
     if (isAdd) {
-      this.props.actions
-        .getEmployeeData(this.props.match.params.id)
-        .then(() => {
+      this.props.actions.getEmployeeData(this.props.match.params.id).then(() => {
           let employeeObject = this.props.employeeResult.data;
           this.setState({ isUpdate: true, employee: employeeObject });
-        });
+        });      
     }
   }
 
