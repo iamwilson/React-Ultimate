@@ -1,10 +1,8 @@
 export const initialState: any = {
-  employees: {},
-  employee: {},
+  login: {},
   error: {},
+  employee: {},
+  employees: {},
   isLoading: 0,
-  user: {
-    token: "",
-    isAuthenticated: false
-  }
+
 };

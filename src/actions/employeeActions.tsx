@@ -8,7 +8,7 @@ export const getEmployeesData = () => {
     dispatch(beginApiCall());
     return api
       .getEmployees()
-      .then(response => {
+      .then((response) => {
         dispatch({
           type: types.GET_EMPLOYEES_SUCCESS,
           employees: response
@@ -29,7 +29,7 @@ export const getEmployeeData = (id: any) => {
     dispatch(beginApiCall());
     return api
       .getEmployee(id)
-      .then(response => {
+      .then((response) => {
         dispatch({
           type: types.GET_EMPLOYEE_SUCCESS,
           employee: response

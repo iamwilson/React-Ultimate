@@ -1,10 +1,10 @@
-import { initialState } from '../initialState';
-import * as types from '../../constants/actionTypes';
+import { initialState } from "../initialState";
+import * as types from "../../constants/actionTypes";
 
 const employeesReducer = (state = initialState.employees, action: any) => {
   switch (action.type) {
     case types.GET_EMPLOYEES_SUCCESS:
-      return Object.assign({}, state, action.employees);
+      return { ...state, ...action.employees };
 
     default:
       return state;

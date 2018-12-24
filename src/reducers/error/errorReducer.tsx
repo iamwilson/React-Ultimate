@@ -1,10 +1,10 @@
-import { initialState } from '../initialState';
-import * as types from '../../constants/actionTypes';
+import { initialState } from "../initialState";
+import * as types from "../../constants/actionTypes";
 
 const errorReducer = (state = initialState.error, action: any) => {
   switch (action.type) {
     case types.GET_EMPLOYEE_ERROR:
-      return Object.assign({}, state, action.error);
+      return {...state, ...action.error};
 
     default:
       return state;

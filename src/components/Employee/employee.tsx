@@ -1,12 +1,13 @@
 // base
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import * as React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 //
-import { Employee } from '../../models/employee';
-import TextBoxComponent from '../elements/textBox';
-import * as employeeActions from '../../actions/employeeActions';
+import { Employee } from "../../models/employee";
+import TextBoxComponent from "../elements/textBox";
+import * as employeeActions from "../../actions/employeeActions";
+import * as validation from "../../utils/validations";
 
 interface IEmployeeComponentProps {
   employeeResult: any;
@@ -20,7 +21,6 @@ interface IEmployeeComponentState {
   employee: Employee;
   errors: Employee;
   isUpdate: boolean;
-  
 }
 
 class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmployeeComponentState> {
@@ -36,62 +36,78 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
 
     };
 
-    this.submitHandler = this.submitHandler.bind(this);
-    this.changeHandler = this.changeHandler.bind(this);
-    
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
   }
 
   componentDidMount() {
-    let isAdd = this.props.match.params.id === undefined ? false : true;
+    const isAdd = this.props.match.params.id === undefined ? false : true;
     if (isAdd) {
       this.props.actions.getEmployeeData(this.props.match.params.id).then(() => {
-          let employeeObject = this.props.employeeResult.data;
+          const employeeObject = this.props.employeeResult.data;
           this.setState({ isUpdate: true, employee: employeeObject });
-        });      
+        });
     }
   }
 
-  changeHandler(e: any) {
-    let key = e.target.name;
-    let value = e.target.value;
+  handleChange(e: any) {
+    const key = e.target.name;
+    const value = e.target.value;
 
     this.validateFields(key, value);
-
-
-    let empObject: Employee = Object.assign({}, this.state.employee);
+    const empObject: Employee = {...this.state.employee};
     empObject[key] = value;
-
     this.setState({ employee: empObject });
+
   }
 
-  nameFieldError: string = "Please enter name";
-  
-  validateFields(key, value){
+  validateFields(key: any, value: any) {
+    const errors = new Employee();
 
-    let error;
-
-    switch(key){
-      case 'name':
-          error = (value.length < 4) ? this.nameFieldError : '';
+    switch (key) {
+      case "name":
+        if (!validation.IsInputNotNull(value)) { errors.name = "Please enter name"; }
         break;
+
+      case "username":
+        if (!validation.IsInputNotNull(value)) { errors.username = "Please enter username"; }
+        break;
+
+      case "email":
+        if (!validation.IsEmailValid(value)) { errors.email = "Please enter a valid email"; }
+        break;
+
+      case "phone":
+        if (!validation.IsInputNotNull(value)) { errors.phone = "Please enter phone number"; }
+        break;
+
+      case "website":
+        if (!validation.IsWebValid(value)) { errors.website = "Please enter a valid website"; }
+        break;
+
       default: break;
+
     }
 
-    this.setState({errors : error});
-    
+    const errorObject = { ...this.state.errors, [key]: errors[key] };
+    this.setState({ errors: errorObject });
+
   }
 
-  submitHandler() {}
-
-  addEmployeeHandler() {}
+  handleSubmit() {
+    this.props.actions.addEmployee(this.state.employee);
+  }
 
   render() {
+    const hasError = Object.keys(this.state.errors).some((key) => this.state.errors[key] !== "");
+    const areEmpty = Object.keys(this.state.employee).some((key) => this.state.employee[key] === "");
     return (
       <div className="employee-container">
         <h2 className="header-wrapper">Employee Details</h2>
         <div className="employee-wrapper">
           <div className="l-wrapper">
-            <form onSubmit={this.submitHandler}>
+            <form onSubmit={this.handleSubmit}>
               <TextBoxComponent
                 label="Name:"
                 name="name"
@@ -99,8 +115,8 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
                 focus={true}
                 placeholder="Enter Name"
                 value={this.state.employee.name}
-                error = {this.state.errors.name}
-                onChange={ this.changeHandler } />
+                error={this.state.errors.name}
+                onChange={this.handleChange}/>
 
               <TextBoxComponent
                 label="Username:"
@@ -108,8 +124,8 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
                 type="text"
                 placeholder="Enter Username"
                 value={this.state.employee.username}
-                error = {this.state.errors.username}
-                onChange={ this.changeHandler } />
+                error={this.state.errors.username}
+                onChange={this.handleChange} />
 
               <TextBoxComponent
                 label="Email:"
@@ -117,8 +133,8 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
                 type="text"
                 placeholder="Enter Email"
                 value={this.state.employee.email}
-                error = {this.state.errors.email}
-                onChange={ this.changeHandler } />
+                error={this.state.errors.email}
+                onChange={this.handleChange} />
 
               <TextBoxComponent
                 label="Phone:"
@@ -126,8 +142,8 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
                 type="text"
                 placeholder="Enter Phone"
                 value={this.state.employee.phone}
-                error = {this.state.errors.phone}
-                onChange={ this.changeHandler } />
+                error={this.state.errors.phone}
+                onChange={this.handleChange} />
 
               <TextBoxComponent
                 label="Website:"
@@ -135,13 +151,13 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
                 type="text"
                 placeholder="Enter Website"
                 value={this.state.employee.website}
-                error = {this.state.errors.website}
-                onChange={ this.changeHandler } />
+                error={this.state.errors.website}
+                onChange={this.handleChange} />
 
-              {this.state.isUpdate == true ? (
+              {this.state.isUpdate === true ? (
                 <button className="btn-save">Update</button>
               ) : (
-                <button className="btn-add" type="submit">Add </button>
+                <button className="btn-add" type="submit" disabled={hasError || areEmpty}>Add </button>
               )}
             </form>
           </div>

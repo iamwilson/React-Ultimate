@@ -8,9 +8,9 @@ export default {
             nameIsInvalid : "Please Enter Name",
         },
         homeComponent: {
-            home: 'Home',
-            department: 'Department',
-            logout: 'Logout'
+            home: "Home",
+            department: "Department",
+            logout: "Logout"
         }
     }
-}
+};

@@ -1,5 +1,5 @@
 // base
-import * as React from 'react';
+import * as React from "react";
 
 class FooterComponent extends React.Component {
   render() {

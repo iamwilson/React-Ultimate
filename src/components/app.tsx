@@ -34,6 +34,7 @@ class App extends React.Component<IAppProps, IAppState> {
       openSideBar: false
     };
     this.logOut = this.logOut.bind(this);
+    this.clickOut = this.clickOut.bind(this);
     this.openSideBar = this.openSideBar.bind(this);
   }
 
@@ -42,37 +43,42 @@ class App extends React.Component<IAppProps, IAppState> {
   }
 
   openSideBar() {
-    let isOpen = this.state.openSideBar == false ? true : false;
+    const isOpen = this.state.openSideBar === false ? true : false;
     this.setState({ openSideBar: isOpen });
   }
 
+  clickOut(e: any) {
+    console.log("clicked outside !");
+  }
+
   render() {
-      return (
-
-        this.props.isAuthenticated ? 
-
-        (<div>
-
-          <SidePanelComponent sideBarOpen={this.state.openSideBar} />
-          <HeaderComponent openSideBar={this.openSideBar} onLogOutClick={this.logOut}/>
-          <LoaderComponent isLoading={this.props.isLoading > 0} />
-
-          <Switch>
-            <Route exact path="/" component={EmployeeListComponent} />
-            <Route path="/about" component={AboutComponent} />
-            <Route exact path="/employee" component={EmployeeComponent} />
-            <Route exact path="/employee/:id" component={EmployeeComponent} />
-          </Switch>
-        </div>) : (<LoginComponent/>)
-      );
-    
+    return (
+      <div>
+        <SidePanelComponent sideBarOpen={this.state.openSideBar} />
+        <HeaderComponent
+          openSideBar={this.openSideBar}
+          onLogOutClick={this.logOut}
+        />
+        <LoaderComponent isLoading={this.props.isLoading > 0} />
+        <Switch>
+          <Route exact={true} path="/" component={EmployeeListComponent} />
+          <Route path="/about" component={AboutComponent} />
+          <Route exact={true} path="/employee" component={EmployeeComponent} />
+          <Route
+            exact={true}
+            path="/employee/:id"
+            component={EmployeeComponent}
+          />
+        </Switch>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = (state: any) => {
   return {
     isLoading: state.isLoading,
-    isAuthenticated: state.user.isAuthenticated
+    isAuthenticated: state.login.isAuthenticated
   };
 };
 

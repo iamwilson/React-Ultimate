@@ -30,8 +30,8 @@ class ListComponent extends React.Component<
       employees: []
     };
 
-    this.addEmployeeHandler = this.addEmployeeHandler.bind(this);
-    this.viewEmployeeHandler = this.viewEmployeeHandler.bind(this);
+    this.handleAddEmployee = this.handleAddEmployee.bind(this);
+    this.handleViewEmployee = this.handleViewEmployee.bind(this);
   }
 
   componentDidMount() {
@@ -41,20 +41,19 @@ class ListComponent extends React.Component<
         (employees: any) => {
           this.setState({ employees: employees });
         },
-        error => {}
+        () => {
+          console.log("error occurred");
+        }
       );
     });
   }
 
-  addEmployeeHandler() {
+  handleAddEmployee() {
     this.props.history.push("/employee");
   }
 
-  viewEmployeeHandler(id: any) {
+  handleViewEmployee(id: any) {
     this.props.history.push("/employee/" + id);
-
-    // console.log(this.props.store);
-    
   }
 
   render() {
@@ -64,8 +63,8 @@ class ListComponent extends React.Component<
         <div>
           <button
             className="btn-add"
-            onClick={e => {
-              this.addEmployeeHandler();
+            onClick={() => {
+              this.handleAddEmployee();
             }}
           >
             Add Employee
@@ -85,7 +84,7 @@ class ListComponent extends React.Component<
               {this.state.employees.map((employee: Employee, index) => (
                 <tr
                   key={index}
-                  onClick={e => this.viewEmployeeHandler(employee.id)}
+                  onClick={() => this.handleViewEmployee(employee.id)}
                 >
                   <td>{employee.id}</td>
                   <td>{employee.name}</td>

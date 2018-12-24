@@ -11,4 +11,4 @@ babel polyfills for IE
 
 Configurations
 ==============
-webpack.config.js - mode"", entry"", output{}, resolve{}, modeule{}, plugins[]
+webpack.config.js - mode"", entry"", output{}, resolve{}, module{}, plugins[]

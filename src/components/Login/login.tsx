@@ -36,29 +36,31 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
   }
 
   handleChange(e: any) {
-    let key = e.target.name;
-    let value = e.target.value;
+    const key = e.target.name;
+    const value = e.target.value;
 
     this.validateFields(key, value);
 
-    let credentialsObject: Credentials = Object.assign({}, this.state.credentials );
+    const credentialsObject: Credentials = {...this.state.credentials };
 
     credentialsObject[key] = value;
     this.setState({ credentials: credentialsObject });
   }
 
   validateFields(key: any, value: any) {
-    let errors = new Credentials();
+    const errors = new Credentials();
 
     switch (key) {
       case "username":
-        if (!validation.IsInputNotNull(value))
+        if (!validation.IsInputNotNull(value)) {
           errors.userName = "Please enter username";
+        }
         break;
 
       case "password":
-        if (!validation.IsInputNotNull(value))
+        if (!validation.IsInputNotNull(value)) {
           errors.passWord = "Please enter password";
+        }
         break;
 
       default: break;
@@ -67,24 +69,22 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
     const errorObject = { ...this.state.errors, [key]: errors[key] };
     this.setState({ errors: errorObject });
 
-
   }
 
   handleLogin() {
 
-    this.props.actions.loginUser(this.state.credentials).then(() =>{
+    this.props.actions.loginUser(this.state.credentials).then(() => {
 
       // console.log(this.props.loginResult);
     });
-    
-    
-  }
-  
-  render() {
-    const areEmpty = Object.keys(this.state.credentials).some(key => this.state.credentials[key] === "");
-    const hasError = Object.keys(this.state.errors).some(key => this.state.errors[key] !== "");
 
-    return (    
+  }
+
+  render() {
+    const areEmpty = Object.keys(this.state.credentials).some((key) => this.state.credentials[key] === "");
+    const hasError = Object.keys(this.state.errors).some((key) => this.state.errors[key] !== "");
+
+    return (
 
       <div className="login-container">
         <div className="login-welcome">EMS</div>
@@ -118,11 +118,11 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
   }
 }
 
-const mapStateToProps =(state: any) => {
+const mapStateToProps = (state: any) => {
   return {
     loginResult: state.user
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch: any) => {
   return {

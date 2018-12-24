@@ -1,8 +1,8 @@
-// base 
-import * as React from 'react';
+// base
+import * as React from "react";
 
-class AboutComponent extends React.Component{
-    render(){
+class AboutComponent extends React.Component {
+    render() {
         return(
             <div className="about-container">
                 <h2 className="header-wrapper">EMS</h2>
