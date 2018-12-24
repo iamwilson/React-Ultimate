@@ -5,13 +5,13 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 // misc
-
 import { Credentials } from "../../models/credentials";
 import TextBoxComponent from "../elements/textBox";
 import * as validation from "../../utils/validations";
-import * as userActions from "../../actions/userActions";
+import * as loginActions from "../../actions/loginActions";
 
 interface ILoginComponentProps {
+  history: any;
   actions: any;
   loginResult: any;
 
@@ -72,10 +72,9 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
   }
 
   handleLogin() {
-
     this.props.actions.loginUser(this.state.credentials).then(() => {
-
-      // console.log(this.props.loginResult);
+      this.props.history.push("/home");
+      console.log(this.props.loginResult);
     });
 
   }
@@ -120,13 +119,13 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
 
 const mapStateToProps = (state: any) => {
   return {
-    loginResult: state.user
+    loginResult: state.login
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    actions: bindActionCreators(userActions, dispatch)
+    actions: bindActionCreators(loginActions, dispatch)
   };
 };
 

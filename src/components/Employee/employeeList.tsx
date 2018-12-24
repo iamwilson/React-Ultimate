@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import { Employee } from "../../models/employee";
-import * as employeeActions from "../../actions/employeeActions";
 import * as interceptor from "../../utils/interceptor";
+import * as employeeActions from "../../actions/employeeActions";
 
 interface IListComponentProps {
   employeesResult: any;
@@ -49,11 +49,11 @@ class ListComponent extends React.Component<
   }
 
   handleAddEmployee() {
-    this.props.history.push("/employee");
+    this.props.history.push("/home/employee");
   }
 
   handleViewEmployee(id: any) {
-    this.props.history.push("/employee/" + id);
+    this.props.history.push("/home/employee/" + id);
   }
 
   render() {
@@ -118,7 +118,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ListComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ListComponent);
