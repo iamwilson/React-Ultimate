@@ -74,7 +74,6 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
   handleLogin() {
     this.props.actions.loginUser(this.state.credentials).then(() => {
       this.props.history.push("/home");
-      console.log(this.props.loginResult);
     });
 
   }

@@ -3,18 +3,19 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 interface ISidePanelProps {
-    sideBarOpen: boolean;
+    openSideBar: boolean;
 }
 
-const SidePanelComponent: React.StatelessComponent<ISidePanelProps> = (props: ISidePanelProps) => {
-        return (
-            props.sideBarOpen &&
-            <div className="sidebar-wrapper">
-                <Link className="sidebar-item" to="/" replace={true}>Home</Link>
-                <Link className="sidebar-item" to="/department" replace={true}>Departments</Link>
-                <Link className="sidebar-item" to="/about" replace={true}>About</Link>\
+const SidePanelComponent: React.SFC<ISidePanelProps> = (props: ISidePanelProps) => {
+    return (
+        (
+            <div id="sidebar" className={props.openSideBar ? "open" : "close"}>
+                <Link className="sidebar-item" to="/home" replace={true}>Home</Link>
+                <Link className="sidebar-item" to="/home/inventory" replace={true}>Inventory</Link>
+                <Link className="sidebar-item" to="/home/about" replace={true}>About</Link>
             </div>
-        );
+        )
+    );
 };
 
 export default SidePanelComponent;

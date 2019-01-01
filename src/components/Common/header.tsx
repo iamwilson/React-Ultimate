@@ -13,8 +13,7 @@ const HeaderComponent: React.SFC<IHeaderProps> = (props: IHeaderProps) => {
     <div className="header-container">
       <ul className="header-ul">
       <button className="hamburger-menu" onClick={props.openSideBar}>☰</button>
-        <Link className="header-li" to="/home" replace={true}>Home</Link>
-        <Link className="header-li" to="/home/about" replace={true}>About</Link>
+        <Link className="header-li" to="/home" replace={true}>EMS</Link>
         <button className="log-out-button" onClick={props.onLogOutClick}>Logout</button>
       </ul>
     </div>

@@ -1,26 +1,35 @@
-.sidebar-wrapper {
-    height: 100%;
+@import '../variables.scss';
+
+#sidebar {
     width: 240px;
-    overflow: auto;
+    height: 100%;
     position: fixed;
-    margin-top: 49px;
-    background-color: #fff;
+    margin-top: 48px;
+    overflow-x: hidden;
     border-right: 1px solid #ccc;
+    background-color: $background_color;
+
+    transform: translateX(-240px);
+    transition: transform 300ms ease-in-out;
 }
+
+#sidebar.open {
+    transform: translateX(0);
+  }
+
+#sidebar.close {
+    transform: translateX(-100%);
+  }
 
 .sidebar-item {
-    border: none;
+    color: black;
     display: block;
     text-align: left;
-    padding: 8px 16px;
+    padding: 14px 14px;
+    text-decoration: none;
 }
 
-.hamburger-menu {
-    float: left;
-    color: white;
-    font-size: 32px;
-    background: none;
-    font-weight: bold;
-    border-style: none;
-    background-color: none;
+.sidebar-item:hover {
+    color: $white;
+    background-color: $hover_color;
 }

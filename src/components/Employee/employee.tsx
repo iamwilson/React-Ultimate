@@ -40,7 +40,6 @@ class EmployeeComponent extends React.Component<
   }
 
   componentDidMount() {
-    console.log("hits employee component");
     const isAdd = this.props.match.params.id === undefined ? false : true;
     if (isAdd) {
       this.props.actions

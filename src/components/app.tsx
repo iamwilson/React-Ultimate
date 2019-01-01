@@ -31,13 +31,15 @@ class App extends React.Component<IAppProps, IAppState> {
   }
 
   render() {
+
+    console.log(this.props.isLoading);
     return (
-      <div>
+      <div className="app-container">
         <LoaderComponent isLoading={this.props.isLoading > 0} />
         <Switch>
-          <Route exact={true} path="/" component={LoginComponent}/>
           <Route path="/home" component={HomeComponent} />
           <Route path="/login" component={LoginComponent} />
+          <Route exact={true} path="/" render={() => (<Redirect to="/login" />)} />
         </Switch>
       </div>
     );

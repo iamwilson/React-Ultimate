@@ -2,7 +2,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 
 import * as userActions from "../actions/loginActions";
 
@@ -11,7 +11,10 @@ import AboutComponent from "./about/about";
 import HeaderComponent from "./common/header";
 import SidePanelComponent from "./common/sidepanel";
 import EmployeeComponent from "./employee/employee";
+import InventoryComponent from "./inventory/inventory";
 import EmployeeListComponent from "./employee/employeeList";
+
+import { PrivateRoute } from "../utils/router";
 
 interface IAppProps {
   actions: any;
@@ -33,6 +36,7 @@ class Home extends React.Component<IAppProps, IAppState> {
     };
     this.handleLogOut = this.handleLogOut.bind(this);
     this.handleOpenSideBar = this.handleOpenSideBar.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   handleLogOut(e: any) {
@@ -45,19 +49,22 @@ class Home extends React.Component<IAppProps, IAppState> {
     this.setState({ openSideBar: isOpen });
   }
 
+  handleClickOutside() {
+    if (this.state.openSideBar === true) {
+      this.setState({openSideBar : false});
+    }
+  }
+
   render() {
     return (
-      <div>
-        <SidePanelComponent sideBarOpen={this.state.openSideBar} />
-        <HeaderComponent
-          openSideBar={this.handleOpenSideBar}
-          onLogOutClick={this.handleLogOut}
-        />
+      <div className="home-container" onClick={this.handleClickOutside}>
+        <SidePanelComponent openSideBar={this.state.openSideBar} />
+        <HeaderComponent openSideBar={this.handleOpenSideBar} onLogOutClick={this.handleLogOut} />
         <Switch>
-          <Route path="/home" component={EmployeeListComponent} />
+          <Route exact={true} path="/home" component={EmployeeListComponent} />
           <Route path="/home/about" component={AboutComponent} />
-          <Route path="/home/employee" component={EmployeeComponent} />
-          <Route path="/home/employee/:id" component={EmployeeComponent} />
+          <Route path="/home/employee/:id?" component={EmployeeComponent} />
+          <PrivateRoute path="/home/inventory" auth={true} component={InventoryComponent} />
         </Switch>
       </div>
     );
