@@ -11,10 +11,10 @@ import * as validation from "../../utils/validations";
 import * as loginActions from "../../actions/loginActions";
 
 interface ILoginComponentProps {
-  history: any;
+  history?: any;
   actions: any;
+  loginComponent: any;
   loginResult: any;
-
 }
 
 interface ILoginComponentState {
@@ -75,7 +75,10 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
     this.props.actions.loginUser(this.state.credentials).then(() => {
       this.props.history.push("/home");
     });
+  }
 
+  componentDidMount() {
+    console.log("props ", this.props);
   }
 
   render() {
@@ -85,7 +88,7 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
     return (
 
       <div className="login-container">
-        <div className="login-welcome">EMS</div>
+        <div className="login-welcome">{this.props.loginComponent.title}</div>
 
         <div className="login-wrapper">
           <TextBoxComponent
@@ -110,6 +113,7 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
           />
 
           <button className="btn btn-login" disabled={hasError || areEmpty} onClick={this.handleLogin}>Login </button>
+
         </div>
       </div>
     );
