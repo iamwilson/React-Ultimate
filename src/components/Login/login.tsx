@@ -77,10 +77,6 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
     });
   }
 
-  componentDidMount() {
-    console.log("props ", this.props);
-  }
-
   render() {
     const areEmpty = Object.keys(this.state.credentials).some((key) => this.state.credentials[key] === "");
     const hasError = Object.keys(this.state.errors).some((key) => this.state.errors[key] !== "");

@@ -14,7 +14,7 @@ Redux - done
 Services - done
 
 React Fragments -
-ComponentDidCatch - 
+Life cycle methods -
 
 Container x Presenter paradigm
 Code splitting

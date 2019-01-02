@@ -26,7 +26,7 @@
         "indent": [
             true,
             "spaces",
-            5
+            4
         ],
         "quotemark": [
             true,

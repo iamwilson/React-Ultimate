@@ -48,12 +48,7 @@ class App extends React.Component<IAppProps, IAppState> {
     }
   }
 
-  componentDidMount() {
-    console.log("app state", this.state.language);
-  }
-
   render() {
-    console.log(this.props.isLoading);
     return (
       <div className="app-container">
         <LoaderComponent isLoading={this.props.isLoading > 0} />
