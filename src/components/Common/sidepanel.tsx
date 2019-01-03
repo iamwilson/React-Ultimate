@@ -1,21 +1,23 @@
 // base
-import * as React from "react";
-import { Link } from "react-router-dom";
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 interface ISidePanelProps {
+    language: any;
     openSideBar: boolean;
+    logOutUser: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const SidePanelComponent: React.SFC<ISidePanelProps> = (props: ISidePanelProps) => {
     return (
         (
             <div id="sidebar" className={props.openSideBar ? "open" : "close"}>
-                <Link className="sidebar-item" to="/home" replace={true}>Home</Link>
-                <Link className="sidebar-item" to="/home/inventory" replace={true}>Inventory</Link>
-                <Link className="sidebar-item" to="/home/about" replace={true}>About</Link>
+                <Link className="sidebar-item" to="/home/department" replace>{props.language.sidebarComponent.department}</Link>
+                <Link className="sidebar-item" to="/home/about" replace>{props.language.sidebarComponent.about}</Link>
+                <button className="sidebar-item-button" onClick={props.logOutUser} >{props.language.sidebarComponent.logout}</button>
             </div>
         )
-    );
-};
+    )
+}
 
 export default SidePanelComponent;

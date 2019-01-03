@@ -1,41 +1,49 @@
+Add Login --> done
 Task Loader --> done
-Add meta tags --> done
+Add Interceptor --> done
+Abstract api calls --> done
+Add Hamburger Menu --> done
 Add validation utility --> done
 Add mock data & service --> done
+Restructure App component --> done
 Add validation - email, phone, website --> done
 Use only one field for validating error messages --> done
-Add Login --> done
-Add Interceptor --> done
-Add Hamburger Menu --> done
-Abstract api calls --> done
+Authenticate all routes --> done
 Add Multi-language --> done
 
-Add Multi-routing --> 90 % done
+Add code splitting -->
+Tidy up Sidepanel component --> 80% done
 Add opacity for loader -->
-Mutate table to card(s) view for mobile -->
 
+Mutate table to card(s) view for mobile -->
+Add Swagger layer -->
+
+Add meta tags -->
 Add Source map -->
 Add Dev/ Prod/ Offline scripts -->
 Remove bundle.js from index.html -->
+
+// Main
+Routing --> 85% done
+CRUD operations - 75 % done
+Multi-language - no page refresh on switch - done
+Authentication - All urls, Restrict direct url access - done
+
+ Session 
+ - InMemory - refresh
+ - Persistent - close tab
+ - Session -
+
+Service layer (tier) --> 75% done
+ - Ajax (swagger generated)
+ - Action (redux) --> done
+ - Online(REST call) - stateful --> done
+ - Offline(JSON file) - simulated with delay --> done
 
 Build scripts 
  - Dev - webpack dev server
  - Offline - looks like prod but contains no JSON
  - Prod - uglified, content slicing (font & images)
 
-Multi-language - no state loss / page refresh on switch
-Authentication - All urls, Restrict direct url access
 
- Session 
- - InMemory - refresh
- - Persistent - close tab
 
-Routing --> 90% done
-Service layer (tier) --> 85% done
-
- - Ajax (swagger generated)
- - Action (redux) --> done
- - Online(REST call) - stateful --> done
- - Offline(JSON file) - simulated with delay --> done
-
-CRUD operations - 90 % done

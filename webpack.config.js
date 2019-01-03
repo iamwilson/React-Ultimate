@@ -2,6 +2,7 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
+  entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath: "/dist",
@@ -11,16 +12,12 @@ module.exports = {
     extensions: [".js", ".ts", ".tsx"]
   },
   module: {
-    rules: [{
-        test: /\.tsx?$/,
-        loader: "ts-loader"
-      },
-      {
-        test: /\.scss/,
-        loader: ["style-loader", "css-loader", "sass-loader"]
-      }
+    rules: [
+      { test: /\.tsx?$/, loader: ["ts-loader"] },
+      { test: /\.(jpe?g|png|gif)$/, loader: ['file-loader'] },    
+      { test: /(\.css|\.scss|\.sass)$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
     ]
   },
-  plugins: []
 
+  plugins: []
 };

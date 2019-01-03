@@ -1,21 +1,15 @@
+@import '../variables.scss';
+
 .alert-danger {
-    color: red;
+    color: $red;
     float: right;
-    font-size: 14px;
+    font-size: $title_font;
 }
 
 .input-field {
     margin: 2px 0px 16px 0px;
 }
 
-.input-label {
-    font-size: 14px;
-}
-
-.hamburger-menu {
-    float: left;
-    border: none;
-    color: white;
-    font-size: 31px;
-    background-color: #4267b2;
+.input-label{
+    font-size: $title_font;
 }

@@ -11,23 +11,20 @@ interface ITextboxProps {
   onChange?: (event: any) => void;
 }
 
-class TextBoxComponent extends React.Component<ITextboxProps> {
-  render() {
-    return (
-      <div>
-        <label>{this.props.label}</label>
-        <label className="alert-error">{this.props.error}</label>
-        <input
-          name={this.props.name}
-          type={this.props.type}
-          value={this.props.value}
-          autoFocus={this.props.focus}
-          onChange={this.props.onChange}
-          placeholder={this.props.placeholder}
-        />
-      </div>
-    );
-  }
-}
+const TextBoxComponent = (props: ITextboxProps) => {
+  return (
+    <div>
+      <label className="input-label">{props.label}</label>
+      <label className="alert-danger">{props.error}</label>
+      <input className="input-field"
+        name={props.name}
+        type={props.type}
+        value={props.value}
+        autoFocus={props.focus}
+        onChange={props.onChange}
+        placeholder={props.placeholder} />
+    </div>
+  );
+};
 
 export default TextBoxComponent;

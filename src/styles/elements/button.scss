@@ -1,12 +1,16 @@
 @import '../variables.scss';
-.btn-save {
-  color: white;
-  padding: 10px 25px;
+
+.btn {
+  color: $white;
   border: none;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: $border-radius;
+}
+
+.btn-save {
+  float: right;
+  padding: 10px 25px; 
   background-color: $blue;
-  margin: 0px 15px 0px 0px;
 }
 
 .btn-save:hover {
@@ -14,11 +18,7 @@
 }
 
 .btn-view {
-  color: white;
   padding: 10px 25px;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
   background-color: $blue;
   margin: 0px 15px 0px 0px;
 }
@@ -28,11 +28,7 @@
 }
 
 .btn-delete {
-  color: white;
   padding: 10px 25px;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
   background-color: $red;
   margin: 0px 15px 0px 0px;
 }
@@ -42,16 +38,21 @@
 }
 
 .btn-add {
-  color: white;
-  padding: 10px 10px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
   float: right;
-  border-radius: 4px;
+  margin: 8px 0;
+  padding: 10px 10px;
   background-color: $green;
 }
 
-.btn-add:hover {
-  background-color: #198c19;
+.btn-login {
+  width: 100%;
+  padding: 10px 40px;
+  margin: 0px 0px 22px 0px;
+  background-color: $blue;
+}
+
+button:disabled {
+  color: #666666;
+  border: 1px solid #b7b7b7;
+  background-color: #cccccc;
 }

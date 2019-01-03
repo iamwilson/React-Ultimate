@@ -1,19 +1,21 @@
 // base
-
 import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { withRouter } from "react-router-dom";
 
 // misc
-import { Credentials } from "../../models/credentials";
 import TextBoxComponent from "../elements/textBox";
-import * as validation from "../../utils/validations";
+import { setToken } from "../../utils/tokenHelper";
+import { Credentials } from "../../models/credentials";
+import * as validation from "../../utils/validationHelper";
 import * as loginActions from "../../actions/loginActions";
+import { responseInterceptor } from "../../utils/interceptors";
 
 interface ILoginComponentProps {
-  history?: any;
   actions: any;
-  loginComponent: any;
+  history: any;
+  language: any;
   loginResult: any;
 }
 
@@ -25,7 +27,6 @@ interface ILoginComponentState {
 class LoginComponent extends React.Component<ILoginComponentProps, ILoginComponentState> {
   constructor(props: ILoginComponentProps) {
     super(props);
-
     this.state = {
       credentials: new Credentials(),
       errors: new Credentials()
@@ -40,11 +41,10 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
     const value = e.target.value;
 
     this.validateFields(key, value);
-
-    const credentialsObject: Credentials = {...this.state.credentials };
-
+    const credentialsObject: Credentials = {...this.state.credentials};
     credentialsObject[key] = value;
     this.setState({ credentials: credentialsObject });
+
   }
 
   validateFields(key: any, value: any) {
@@ -52,17 +52,11 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
 
     switch (key) {
       case "username":
-        if (!validation.IsInputNotNull(value)) {
-          errors.userName = "Please enter username";
-        }
+        if (!validation.IsInputNotNull(value)) { errors.username = this.props.language.loginComponent.errors.username; }
         break;
-
       case "password":
-        if (!validation.IsInputNotNull(value)) {
-          errors.passWord = "Please enter password";
-        }
+        if (!validation.IsInputNotNull(value)) { errors.password = this.props.language.loginComponent.errors.password; }
         break;
-
       default: break;
     }
 
@@ -73,43 +67,48 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
 
   handleLogin() {
     this.props.actions.loginUser(this.state.credentials).then(() => {
-      this.props.history.push("/home");
+      responseInterceptor(
+        this.props.loginResult,
+        (data: any) => {
+          setToken(data);
+        },
+        (error: any) => {
+          console.log("there's an error ", error);
+        }
+      );
+      this.props.history.replace("/home");
     });
+
   }
 
   render() {
-    const areEmpty = Object.keys(this.state.credentials).some((key) => this.state.credentials[key] === "");
     const hasError = Object.keys(this.state.errors).some((key) => this.state.errors[key] !== "");
+    const areEmpty = Object.keys(this.state.credentials).some((key) => this.state.credentials[key] === "");
 
     return (
-
       <div className="login-container">
-        <div className="login-welcome">{this.props.loginComponent.title}</div>
-
+        <div className="login-welcome">Coretta</div>
         <div className="login-wrapper">
           <TextBoxComponent
-            label="Username:"
-            name="userName"
+            label={this.props.language.loginComponent.labels.username}
+            name="username"
             type="text"
             focus={true}
-            placeholder="Enter Username"
-            value={this.state.credentials.userName}
-            error={this.state.errors.userName}
+            placeholder={this.props.language.loginComponent.placeholders.username}
+            value={this.state.credentials.username}
+            error={this.state.errors.username}
             onChange={this.handleChange}
           />
-
           <TextBoxComponent
-            label="Password:"
-            name="passWord"
+            label={this.props.language.loginComponent.labels.password}
+            name="password"
             type="password"
-            placeholder="Enter Password"
-            value={this.state.credentials.passWord}
-            error={this.state.errors.passWord}
+            placeholder={this.props.language.loginComponent.placeholders.password}
+            value={this.state.credentials.password}
+            error={this.state.errors.password}
             onChange={this.handleChange}
           />
-
-          <button className="btn btn-login" disabled={hasError || areEmpty} onClick={this.handleLogin}>Login </button>
-
+          <button className="btn btn-login" disabled={hasError || areEmpty} onClick={this.handleLogin}>{this.props.language.buttons.login}</button>
         </div>
       </div>
     );
@@ -128,4 +127,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);
+export default withRouter<any>(connect(mapStateToProps, mapDispatchToProps)(LoginComponent));

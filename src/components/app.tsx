@@ -2,27 +2,24 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
-
-import english from "../assets/languages/en-lang";
-import french from "../assets/languages/fr-lang";
-
-import * as userActions from "../actions/loginActions";
+import { Route, Redirect, Switch, withRouter } from "react-router-dom";
 
 // components
 import HomeComponent from "./home";
 import LoginComponent from "./login/login";
+import FooterComponent from "./common/footer";
 import LoaderComponent from "./elements/loader";
+import * as loginAction from "../actions/loginActions";
+
+// utils
+import { initializeLanguage, switchLanguage } from "../utils/languageHelper";
 
 interface IAppProps {
   actions: any;
   isLoading: any;
-  history: any;
-  isAuthenticated: any;
 }
 
 interface IAppState {
-  loginSuccess: boolean;
   language: any;
 }
 
@@ -30,34 +27,26 @@ class App extends React.Component<IAppProps, IAppState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      loginSuccess: false,
-      language: this.getDefaultLanguage(),
+      language: initializeLanguage(),
     };
-    this.changeLanguage = this.changeLanguage.bind(this);
+
+    this.handleSwitchLanguage = this.handleSwitchLanguage.bind(this);
   }
 
-  getDefaultLanguage() {
-      return english;
-  }
-
-  changeLanguage(code: any) {
-    if (code === "en") {
-      this.setState({language: english});
-    } else {
-      this.setState({language: french});
-    }
+  handleSwitchLanguage(e: any) {
+    const language = switchLanguage(e);
+    this.setState({ language: language });
   }
 
   render() {
     return (
-      <div className="app-container">
+      <div className="main">
         <LoaderComponent isLoading={this.props.isLoading > 0} />
-        <button onClick={() => this.changeLanguage("en")}>ENG</button>
-        <button onClick={() => this.changeLanguage("fr")}>FRA</button>
+        <FooterComponent switchLanguage={this.handleSwitchLanguage} {...this.state.language} />
         <Switch>
-          <Route path="/home" component={HomeComponent} />
           <Route exact={true} path="/" render={() => <Redirect to="/login" />} />
-          <Route path="/login" render={(props) => <LoginComponent {...props} {...this.state.language}/>}  />
+          <Route path="/home" render={(props) => <HomeComponent {...props} {...this.state.language} />} />
+          <Route path="/login" render={(props) => <LoginComponent {...props} {...this.state.language} />} />
         </Switch>
       </div>
     );
@@ -66,20 +55,14 @@ class App extends React.Component<IAppProps, IAppState> {
 
 const mapStateToProps = (state: any) => {
   return {
-    isLoading: state.isLoading,
-    isAuthenticated: state.login.isAuthenticated
+    isLoading: state.isLoading
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    actions: bindActionCreators(userActions, dispatch)
+    actions: bindActionCreators(loginAction, dispatch)
   };
 };
 
-export default withRouter<any>(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
-);
+export default withRouter<any>(connect(mapStateToProps, mapDispatchToProps)(App));

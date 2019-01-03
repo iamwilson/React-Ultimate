@@ -10,8 +10,6 @@
 		"lint": "tslint -p tsconfig.json",
 		"start": "webpack-dev-server --port 3000"
 	},
-
-
 	"dependencies": {
 		"axios": "^0.18.0",
 		"bootstrap": "^4.1.1",
@@ -23,7 +21,6 @@
 		"redux": "^4.0.0",
 		"redux-thunk": "^2.3.0"
 	},
-
 	"devDependencies": {
 		"@types/axios": "^0.14.0",
 		"@types/react": "^16.4.6",
@@ -32,6 +29,7 @@
 		"@types/react-router": "^4.0.29",
 		"@types/react-router-dom": "^4.2.7",
 		"css-loader": "^0.28.11",
+		"file-loader": "^3.0.1",
 		"html-webpack-plugin": "^3.2.0",
 		"imports-loader": "^0.8.0",
 		"node-sass": "^4.9.1",

@@ -3,31 +3,28 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
+// misc
 import { Employee } from "../../models/employee";
-import * as interceptor from "../../utils/interceptor";
 import * as employeeActions from "../../actions/employeeActions";
 
-interface IListComponentProps {
-  employeesResult: any;
-  store: any;
-
+interface IEmployeeListComponentProps {
   actions: any;
   history: any;
+  language: any;
+  employeesResult: any;
 }
 
-interface IListComponentState {
+interface IEmployeeListComponentState {
   employees: Array<Employee>;
 }
 
-class ListComponent extends React.Component<
-  IListComponentProps,
-  IListComponentState
-> {
-  constructor(props: IListComponentProps) {
+class EmployeeListComponent extends React.Component<IEmployeeListComponentProps, IEmployeeListComponentState> {
+
+  constructor(props: IEmployeeListComponentProps) {
     super(props);
 
     this.state = {
-      employees: []
+      employees: [],
     };
 
     this.handleAddEmployee = this.handleAddEmployee.bind(this);
@@ -36,16 +33,10 @@ class ListComponent extends React.Component<
 
   componentDidMount() {
     this.props.actions.getEmployeesData().then(() => {
-      interceptor.responseInterceptor(
-        this.props.employeesResult,
-        (employees: any) => {
-          this.setState({ employees: employees });
-        },
-        () => {
-          console.log("error occurred");
-        }
-      );
+      const employeesObject = this.props.employeesResult.data;
+      this.setState({ employees: employeesObject });
     });
+
   }
 
   handleAddEmployee() {
@@ -59,41 +50,29 @@ class ListComponent extends React.Component<
   render() {
     return (
       <div className="list-container">
-        <h2 className="header-wrapper">Employee List</h2>
+        <h2 className="header-wrapper">{this.props.language.employeeComponent.title}</h2>
         <div>
-          <button
-            className="btn-add"
-            onClick={() => {
-              this.handleAddEmployee();
-            }}
-          >
-            Add Employee
-          </button>
+          <button className="btn btn-add" onClick={(e) => { this.handleAddEmployee(); }} >{this.props.language.buttons.newEmployee} </button>
           <table className="table">
             <tbody>
               <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Website</th>
-                <th>Actions</th>
+                <th>{this.props.language.employeeComponent.id}</th>
+                <th>{this.props.language.employeeComponent.name}</th>
+                <th>{this.props.language.employeeComponent.username}</th>
+                <th>{this.props.language.employeeComponent.email}</th>
+                <th>{this.props.language.employeeComponent.website}</th>
+                <th>{this.props.language.employeeComponent.action}</th>
               </tr>
 
               {this.state.employees.map((employee: Employee, index) => (
-                <tr
-                  key={index}
-                  onClick={() => this.handleViewEmployee(employee.id)}
-                >
+                <tr key={index} onClick={() => this.handleViewEmployee(employee.id)}>
                   <td>{employee.id}</td>
                   <td>{employee.name}</td>
                   <td>{employee.username}</td>
                   <td>{employee.email}</td>
-                  <td>{employee.phone}</td>
                   <td>{employee.website}</td>
                   <td>
-                    <button className="btn-delete">delete</button>
+                    <button className="btn btn-delete">{this.props.language.buttons.delete}</button>
                   </td>
                 </tr>
               ))}
@@ -107,8 +86,7 @@ class ListComponent extends React.Component<
 
 const mapStateToProps = (state: any) => {
   return {
-    employeesResult: state.employees,
-    store: state
+    employeesResult: state.employees
   };
 };
 
@@ -118,4 +96,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeListComponent);

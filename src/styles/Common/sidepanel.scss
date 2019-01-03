@@ -4,11 +4,11 @@
     width: 240px;
     height: 100%;
     position: fixed;
-    margin-top: 48px;
+    margin-top: 49px;
     overflow-x: hidden;
     border-right: 1px solid #ccc;
     background-color: $background_color;
-
+    z-index: 1;
     transform: translateX(-240px);
     transition: transform 300ms ease-in-out;
 }
@@ -27,6 +27,23 @@
     text-align: left;
     padding: 14px 14px;
     text-decoration: none;
+}
+
+.sidebar-item-button{
+    background: none;
+    border: none;
+    display: block;
+    padding: 14px 14px;
+    text-decoration: none;
+    font-size: 16px; 
+}
+
+.sidebar-item-button:hover {
+    color: $white;
+    cursor: pointer;
+    width: inherit;
+    text-align: left;
+    background-color: $hover_color;
 }
 
 .sidebar-item:hover {

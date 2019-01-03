@@ -1,23 +1,21 @@
 // base
-import * as React from "react";
-import { Link } from "react-router-dom";
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 
-interface IHeaderProps {
-  onLogOutClick: (e: any) => void;
-  openSideBar: (e: any) => void;
-  showHeader?: any;
+interface IHeaderComponentProps {
+  openSideBar: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  language: any;
 }
 
-const HeaderComponent: React.SFC<IHeaderProps> = (props: IHeaderProps) => {
+const HeaderComponent: React.SFC<IHeaderComponentProps> = (props: IHeaderComponentProps) => {
   return (
     <div className="header-container">
       <ul className="header-ul">
-      <button className="hamburger-menu" onClick={props.openSideBar}>☰</button>
-        <Link className="header-li" to="/home" replace={true}>EMS</Link>
-        <button className="log-out-button" onClick={props.onLogOutClick}>Logout</button>
+        <button className="hamburger" onClick={props.openSideBar}>☰</button>
+        <Link className="header-li" to="/home" replace>{props.language.headerComponent.title}</Link>
       </ul>
     </div>
   );
-};
+}
 
-export default HeaderComponent;
+export default HeaderComponent; 

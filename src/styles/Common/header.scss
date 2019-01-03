@@ -1,35 +1,47 @@
 @import '../variables.scss';
 
 .header-container {
+    .hamburger {
+        font-size: 32px !important;
+        float: left;
+        background: transparent;
+        color: $white;
+        border: none;
+        width: 50px;
+    }
+
     .header-ul {
         margin: 0;
         padding: 0;
         overflow: hidden;
         list-style-type: none;
         background-color: $theme_color;
+
         .header-li {
             float: left;
+            color: $white;
             padding: 15px;
             display: block;
-            color: white;
             text-align: center;
             text-decoration: none;
             &:hover {
-                background-color: #213359;
+                background-color: $hover_color
             }
         }
+
         .log-out-button {
             float: right;
-            background-color: #4267b2;
+            background-color: $theme_color;
             border: none;
-            color: white;
+            color: $white;
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
+
             &:hover {
-                background-color: #213359;
+                background-color: $hover_color;
                 cursor: pointer;
             }
         }

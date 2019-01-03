@@ -3,6 +3,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { HashRouter } from "react-router-dom";
+
 import { configureStore } from "./stores/configureStore";
 
 // components
@@ -12,6 +13,10 @@ import App from "./components/app";
 import "./styles/main.scss";
 
 const store = configureStore();
+
+store.subscribe(() => {
+    // setToken(store.getState().login);
+});
 
 ReactDOM.render(
   <Provider store={store}>

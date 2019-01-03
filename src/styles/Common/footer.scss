@@ -1,12 +1,29 @@
 @import '../variables.scss';
 
 .footer-bar {
-    color: white;
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 10px;
+    padding: 12px;
+    color: $white;
+    position: fixed;
     text-align: center;
     background-color: $theme_color;
+
+    .rights-bar {
+        float: left;
+    }
+
+    .translate-bar {
+        float: right;
+        margin-right: 24px;
+
+        .language-menu {
+            border: none;
+            padding: 2px;
+            font-size: 15px;
+            margin-left: 10px;
+            background-color: $background_color;
+        }
+    }
 }

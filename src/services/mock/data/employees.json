@@ -1,41 +1,28 @@
-[{
+[
+    {
         "id": 1,
-        "name": "Damond John",
-        "username": "DJ",
-        "email": "damond@fubu.com",
-        "phone": "+1 522 369 9633",
-        "website": "www.fubu.com"
+        "name": "Shawn Carter",
+        "username": "Hov",
+        "email": "jayz@rocnation.com",
+        "phone": "1-770-736-8031",
+        "website": "www.rocnation.org"
     },
+
     {
         "id": 2,
-        "name": "Denzel Washington",
-        "username": "DW",
-        "email": "denzel@washington.com",
-        "phone": "+1 236 699 7854",
-        "website": "www.washington.com"
+        "name": "Andre Romelle",
+        "username": "Dr. Dre",
+        "email": "dre@interscope.tv",
+        "phone": "1-701-692-6593",
+        "website": "www.interscope.net"
     },
     {
         "id": 3,
-        "name": "Shawn Carter",
-        "username": "SC",
-        "email": "shawn@cater.com",
-        "phone": "+1 5852 598 9648",
-        "website": "www.carter.com"
-    },
-    {
-        "id": 4,
-        "name": "Barack Obama",
-        "username": "BO",
-        "email": "barack@obama.com",
-        "phone": "+1 745 458 4574",
-        "website": "www.obama.com"
-    },
-    {
-        "id": 5,
-        "name": "Idris Elba",
-        "username": "IE",
-        "email": "idris@elba.com",
-        "phone": "+1 474 585 6696",
-        "website": "www.idris.com"
-    }
+        "name": "Sean Combs",
+        "username": "Diddy",
+        "email": "diddy@badboy.com",
+        "phone": "1-463-123-4447",
+        "website": "www.badboyrecords.com"
+        
+    }    
 ]
