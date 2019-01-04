@@ -4,7 +4,7 @@ npm i css-loader style-loader node-sass sass-loader--save-dev
 npm i webpack webpack-dev-server webpack-cli --save-dev
 npm i typescript ts-loader file-loader --save-dev
 
-npm i @types/axios --save-dev
+npm i @types/axios @types/node --save-dev
 npm i react react-dom react-router-dom redux react-redux axios--save
 
 Configurations
