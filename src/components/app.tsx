@@ -1,12 +1,15 @@
 // base
 import * as React from "react";
 import { connect } from "react-redux";
+// tslint:disable-next-line:no-duplicate-imports
+import { lazy, Suspense } from "react";
 import { bindActionCreators } from "redux";
 import { Route, Redirect, Switch, withRouter } from "react-router-dom";
 
 // components
-import HomeComponent from "./home";
-import LoginComponent from "./login/login";
+const HomeComponent = lazy(() => import("./home"));
+const LoginComponent = lazy(() => import("./login/login"));
+
 import FooterComponent from "./common/footer";
 import LoaderComponent from "./elements/loader";
 import * as loginAction from "../actions/loginActions";
@@ -43,11 +46,13 @@ class App extends React.Component<IAppProps, IAppState> {
       <div className="main">
         <LoaderComponent isLoading={this.props.isLoading > 0} />
         <FooterComponent switchLanguage={this.handleSwitchLanguage} {...this.state.language} />
+        <Suspense fallback={<LoaderComponent isLoading={true} />}>
         <Switch>
           <Route exact={true} path="/" render={() => <Redirect to="/login" />} />
           <Route path="/home" render={(props) => <HomeComponent {...props} {...this.state.language} />} />
           <Route path="/login" render={(props) => <LoginComponent {...props} {...this.state.language} />} />
         </Switch>
+        </Suspense>
       </div>
     );
   }

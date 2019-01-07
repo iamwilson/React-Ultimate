@@ -9,4 +9,4 @@ npm i react react-dom react-router-dom redux react-redux axios--save
 
 Configurations
 ==============
-webpack.config.js - mode"", entry"", output{}, resolve{}, modeule{}, plugins[]
+webpack.config.js - mode"", entry"", output{}, resolve{}, module{}, plugins[]

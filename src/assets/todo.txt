@@ -1,31 +1,31 @@
 Add Login --> done
 Task Loader --> done
 Add Interceptor --> done
+Add code splitting --> done
 Abstract api calls --> done
 Add Hamburger Menu --> done
+
+Add Multi-language --> done
+Authenticated routes --> done
 Add validation utility --> done
 Add mock data & service --> done
 Restructure App component --> done
+Tidy up Sidepanel component --> done
 Add validation - email, phone, website --> done
 Use only one field for validating error messages --> done
-Authenticate all routes --> done
-Add Multi-language --> done
 
-Add code splitting -->
-Tidy up Sidepanel component --> 80% done
 Add opacity for loader -->
-
 Mutate table to card(s) view for mobile -->
-Add Swagger layer -->
 
+Add Swagger layer -->
 Add meta tags -->
 Add Source map -->
 Add Dev/ Prod/ Offline scripts -->
 Remove bundle.js from index.html -->
 
 // Main
-Routing --> 85% done
-CRUD operations - 75 % done
+Routing --> done
+CRUD operations - done
 Multi-language - no page refresh on switch - done
 Authentication - All urls, Restrict direct url access - done
 
@@ -44,6 +44,3 @@ Build scripts
  - Dev - webpack dev server
  - Offline - looks like prod but contains no JSON
  - Prod - uglified, content slicing (font & images)
-
-
-

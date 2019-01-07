@@ -17,19 +17,19 @@ import { removeToken } from "../utils/tokenHelper";
 import { PrivateRoute } from "../utils/routingHelper";
 import * as loginAction from "../actions/loginActions";
 
-interface IAppProps {
+interface IHomeProps {
     actions: any;
     history: any;
     language: any;
     isLoading: any;
 }
 
-interface IAppState {
+interface IHomeState {
     openSideBar: boolean;
     isAuthenticated: boolean;
 }
 
-class HomeComponent extends React.Component<IAppProps, IAppState> {
+class HomeComponent extends React.Component<IHomeProps, IHomeState> {
     constructor(props: any) {
         super(props);
         this.state = {
