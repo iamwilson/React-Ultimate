@@ -1,36 +1,117 @@
 @import '../variables.scss';
 
-.list-container {
-  margin: 10px;
-  padding: 25px;
-  background-color: white;
+@media only screen and (min-width: 686px) {
+  .list-container {
+    margin: 10px;
+    padding: 25px;
+    background-color: white;
+  }
+
+  .header-wrapper {
+    color: #a4a6a9;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: $general_font;
+    border-radius: $border-radius;
+  }
+
+  .table th {
+    color: white;
+    text-align: center;
+    padding: 10px 0px 10px 10px;
+    background-color: $theme_color;
+  }
+
+  .table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+
+  .table tr:hover {
+    cursor: pointer;
+    background-color: #eeeeee;
+  }
+
 }
 
-.header-wrapper {
-  color: #a4a6a9;
-}
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: $general_font;
-  border-radius: $border-radius;
-}
+@media only screen and (max-width: 685px) {
 
-.table th {
-  color: white;
-  text-align: center;
-  padding: 10px 0px 10px 10px;
-  background-color: $theme_color;
-}
+  .list-container {
+    padding: 25px;
+    background-color: white;
+    height: -webkit-fill-available;
+  }
 
-.table td {
-  padding: 5px;
-  text-align: center;
-  border: 1px solid #ddd;
-}
+  .header-wrapper {
+    color: #a4a6a9;
+  }
 
-.table tr:hover {
-  cursor: pointer;
-  background-color: #eeeeee;
+  table, thead, tbody, th, td, tr {
+    display: block;
+    padding: 5px;
+  }
+
+  .table-header {
+    display: none;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+    margin: 0px 0px 20px 0px;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  
+  .user-action{
+    display: none;
+  }
+
+  td:nth-of-type(1):before {
+    content: "Id";
+  }
+
+  td:nth-of-type(2):before {
+    content: "Name";
+  }
+
+  td:nth-of-type(3):before {
+    content: "UserName";
+  }
+
+  td:nth-of-type(4):before {
+    content: "Email";
+  }
+
+  td:nth-of-type(5):before {
+    content: "Website";
+  }
+
+  td:nth-of-type(6):before {
+    content: "Action";
+  }
 }
