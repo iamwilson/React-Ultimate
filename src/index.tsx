@@ -14,10 +14,6 @@ import "./styles/main.scss";
 
 const store = configureStore();
 
-store.subscribe(() => {
-    // setToken(store.getState().login);
-});
-
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
