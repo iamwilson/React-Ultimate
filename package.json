@@ -1,8 +1,8 @@
 {
 	"name": "coretta",
-	"version": "1.0.0",
-	"description": "Employee Management System",
+	"version": "1.1.0",
 	"author": "John Wilson",
+	"description": "Employee Management System",
 	"license": "MIT",
 	"scripts": {
 		"build": "webpack -p",
