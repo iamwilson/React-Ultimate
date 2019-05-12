@@ -1,6 +1,6 @@
-import * as types from "../constants/actionTypes";
-import { Credentials } from "../models/credentials";
-import * as api from "../services/authenticationService";
+import * as types from '../constants/actionTypes';
+import { Credentials } from '../models/credentials';
+import * as api from '../services/authenticationService';
 
 export const loginUser = (credentials: Credentials) => {
     return (dispatch: any) => {

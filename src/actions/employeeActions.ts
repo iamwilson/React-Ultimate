@@ -1,6 +1,6 @@
-import * as types from "../constants/actionTypes";
-import * as api from "../services/employeeService";
-import { beginApiCall, endApiCall } from "./commonActions";
+import * as types from '../constants/actionTypes';
+import * as api from '../services/employeeService';
+import { beginApiCall, endApiCall } from './commonActions';
 
 export const getEmployeesData = () => {
   return (dispatch: any) => {
