@@ -1,12 +1,12 @@
 // base
-import axios from "axios";
+import axios from 'axios';
 
 export const requestInterceptor = (url: any, verb: any, timeOut: number) => {
     const axiosRequest = axios.request({
         url: url,
         method: verb,
         timeout: timeOut,
-        headers: { "X-Custom-Header": "EMS-HEADER" },
+        headers: { 'X-Custom-Header': 'EMS-HEADER' },
     });
     return axiosRequest;
 };
