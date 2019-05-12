@@ -6,12 +6,16 @@ export const requestInterceptor = (url: any, verb: any, timeOut: number) => {
         url: url,
         method: verb,
         timeout: timeOut,
-        headers: { 'X-Custom-Header': 'EMS-HEADER' },
+        headers: { 'X-Custom-Header': 'EMS-HEADER' }
     });
     return axiosRequest;
 };
 
-export const responseInterceptor = (response: any, success: (data: any) => void, fail: (data: any) => void) => {
+export const responseInterceptor = (
+    response: any,
+    success: (data: any) => void,
+    fail: (data: any) => void
+) => {
     if (response.status === 200) {
         success(response.data);
     } else {
