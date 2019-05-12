@@ -1,9 +1,9 @@
 // base
-import axios from "axios";
+import axios from 'axios';
 
 // configurations
-import * as appSetting from "../configs/config";
-import * as mockService from "./mock/mockService";
+import * as appSetting from '../configs/config';
+import * as mockService from './mock/mockService';
 
 const url = `https://jsonplaceholder.typicode.com/users/`;
 
@@ -18,7 +18,7 @@ export const getEmployees = () => {
 export const getEmployee = (id: any) => {
     if (appSetting.config.mode === appSetting.ONLINE) {
         return axios({
-            method: "get",
+            method: 'get',
             url: url + id,
         });
     } else {

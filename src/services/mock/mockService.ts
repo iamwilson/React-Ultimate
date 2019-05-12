@@ -1,14 +1,14 @@
-import * as appSetting from "../../configs/config";
+import * as appSetting from '../../configs/config';
 
 export const getEmployees = () => {
-    const data = require("./data/employees.json");
+    const data = require('./data/employees.json');
     return new Promise((resolve) => {
         resolveData(resolve, data, 200, appSetting.config.delay);
     });
 };
 
 export const getEmployee = (id: any) => {
-    const data = require("./data/employees.json");
+    const data = require('./data/employees.json');
     const result = data.find((x: { id: any; }) => x.id === id);
 
     return new Promise((resolve) => {
@@ -17,7 +17,7 @@ export const getEmployee = (id: any) => {
 };
 
 export const authenticateUser = (credentials: any) => {
-    const data = require("./data/token.json");
+    const data = require('./data/token.json');
     return new Promise((resolve) => {
         resolveData(resolve, data, 200);
     });

@@ -7,10 +7,10 @@ export class Employee {
   website: string;
 
   constructor() {
-    this.name = "";
-    this.username = "";
-    this.email = "";
-    this.phone = "";
-    this.website = "";
+    this.name = '';
+    this.username = '';
+    this.email = '';
+    this.phone = '';
+    this.website = '';
   }
 }
