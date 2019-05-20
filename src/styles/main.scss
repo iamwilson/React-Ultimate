@@ -1,12 +1,15 @@
 // core
 @import 'variables.scss';
+@import '~bootstrap/scss/bootstrap.scss';
 
 
 // common
 @import './common/header.scss';
 @import './common/footer.scss';
 @import './common/common.scss';
+@import './common/layout.scss';
 @import './common/sidepanel.scss';
+
 
 // components
 @import './login/login.scss';
