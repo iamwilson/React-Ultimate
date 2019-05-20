@@ -1,9 +1,6 @@
-// base
+// core
 @import 'variables.scss';
 
-// elements
-@import './elements/button.scss';
-@import './elements/loader.scss';
 
 // common
 @import './common/header.scss';
@@ -17,6 +14,10 @@
 @import './employee/employee.scss';
 @import './employee/employeeList.scss';
 @import './department/department.scss';
+
+// elements
+@import './elements/button.scss';
+@import './elements/loader.scss';
 
 body {
     left: 0px;

@@ -1,4 +1,4 @@
-// base
+// core
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { lazy, Suspense } from 'react';

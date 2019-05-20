@@ -1,4 +1,4 @@
-// base
+// core
 import axios from 'axios';
 
 export const requestInterceptor = (url: any, verb: any, timeOut: number) => {

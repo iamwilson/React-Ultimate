@@ -1,4 +1,4 @@
-// base
+// core
 import * as React from 'react';
 
 const AboutComponent = () => {
