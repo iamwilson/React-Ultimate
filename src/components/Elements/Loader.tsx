@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface ILoaderProps {
   isLoading: boolean;
@@ -7,8 +7,9 @@ interface ILoaderProps {
 const LoaderComponent = (props: ILoaderProps) => {
   return (
     props.isLoading &&
-    <div className="loader-container">
-      <div className="loader" />
+    // tslint:disable-next-line:jsx-wrap-multiline
+    <div className='loader-container'>
+      <div className='loader' />
     </div>
   );
 };

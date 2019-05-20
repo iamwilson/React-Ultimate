@@ -1,11 +1,11 @@
 // base
-import * as React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 // misc
-import { Employee } from "../../models/employee";
-import * as employeeActions from "../../actions/employeeActions";
+import { Employee } from '../../models/employee';
+import * as employeeActions from '../../actions/employeeActions';
 
 interface IEmployeeListComponentProps {
   actions: any;
@@ -40,20 +40,20 @@ class EmployeeListComponent extends React.Component<IEmployeeListComponentProps,
   }
 
   handleAddEmployee() {
-    this.props.history.push("/home/employee");
+    this.props.history.push('/home/employee');
   }
 
   handleViewEmployee(id: any) {
-    this.props.history.push("/home/employee/" + id);
+    this.props.history.push('/home/employee/' + id);
   }
 
   render() {
     return (
-      <div className="list-container">
-        <h2 className="header-wrapper">{this.props.language.employeeComponent.title}</h2>
+      <div className='list-container'>
+        <h2 className='header-wrapper'>{this.props.language.employeeComponent.title}</h2>
         <div>
-          <button className="btn btn-add" onClick={(e) => { this.handleAddEmployee(); }} >{this.props.language.buttons.newEmployee} </button>
-          <table className="table">
+          <button className='btn btn-add' onClick={(e) => { this.handleAddEmployee(); }} >{this.props.language.buttons.newEmployee} </button>
+          <table className='table'>
             <tbody>
               <tr>
                 <th>{this.props.language.employeeComponent.id}</th>
@@ -72,7 +72,7 @@ class EmployeeListComponent extends React.Component<IEmployeeListComponentProps,
                   <td>{employee.email}</td>
                   <td>{employee.website}</td>
                   <td>
-                    <button className="btn btn-delete">{this.props.language.buttons.delete}</button>
+                    <button className='btn btn-delete'>{this.props.language.buttons.delete}</button>
                   </td>
                 </tr>
               ))}

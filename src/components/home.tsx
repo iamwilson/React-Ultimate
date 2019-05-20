@@ -1,21 +1,21 @@
 // base
-import * as React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { Route, Switch, withRouter } from "react-router-dom";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 // components
-import AboutComponent from "./about/about";
-import HeaderComponent from "./common/header";
-import SidePanelComponent from "./common/sidepanel";
-import EmployeeComponent from "./employee/employee";
-import DepartmentComponent from "./department/department";
-import EmployeeListComponent from "./employee/employeeList";
+import AboutComponent from './about/about';
+import HeaderComponent from './common/header';
+import SidePanelComponent from './common/sidepanel';
+import EmployeeComponent from './employee/employee';
+import DepartmentComponent from './department/department';
+import EmployeeListComponent from './employee/employeeList';
 
 // misc
-import { removeToken } from "../utils/tokenHelper";
-import { PrivateRoute } from "../utils/routingHelper";
-import * as loginAction from "../actions/loginActions";
+import { removeToken } from '../utils/tokenHelper';
+import { PrivateRoute } from '../utils/routingHelper';
+import * as loginAction from '../actions/loginActions';
 
 interface IHomeProps {
     actions: any;
@@ -45,7 +45,7 @@ class HomeComponent extends React.Component<IHomeProps, IHomeState> {
     handleLogOut() {
         this.props.actions.logoutUser();
         removeToken();
-        this.props.history.replace("/login");
+        this.props.history.replace('/login');
     }
 
     handleSideBar() {
@@ -63,10 +63,10 @@ class HomeComponent extends React.Component<IHomeProps, IHomeState> {
                 <SidePanelComponent openSideBar={this.state.openSideBar} logOutUser={this.handleLogOut} {...this.props} />
                 <HeaderComponent openSideBar={this.handleSideBar} {...this.props} />
                 <Switch>
-                    <Route path="/home/about" component={AboutComponent} />
-                    <Route path="/home/employee/:id?" component={EmployeeComponent} />
-                    <Route exact={true} path="/home" render={(props) => <EmployeeListComponent {...props}{...this.props} />} />
-                    <PrivateRoute authenticated={true} path="/home/department" component={DepartmentComponent} />
+                    <Route path='/home/about' component={AboutComponent} />
+                    <Route path='/home/employee/:id?' component={EmployeeComponent} />
+                    <Route exact={true} path='/home' render={(props) => <EmployeeListComponent {...props}{...this.props} />} />
+                    <PrivateRoute authenticated={true} path='/home/department' component={DepartmentComponent} />
                 </Switch>
             </div>
         );
