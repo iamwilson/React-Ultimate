@@ -8,6 +8,7 @@
        right: 0;
        color: white;
        display: flex;
+       width: 240px;
 }
 
 .contentPanel {
@@ -16,5 +17,5 @@
        flex-direction: column;
        max-width:  calc(100vw - 240px);
        position: relative;
-       margin-left: 210px;
+       margin-left: 240px;
 }

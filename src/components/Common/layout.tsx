@@ -3,14 +3,14 @@ import * as React from 'react';
 
 const Layout: React.SFC = (props: any) => {
     return (
-        <div className='col-md-12 container'>
-            <div className='col-md-2 sidePanel'>sidePanel</div>
-            <div className='col-md-10 contentPanel'>
-                <div className='row'>
+        <div className=''>
+            <div className='sidePanel'>
+                <div className='container'>sidePanel</div>
+            </div>
+            <div className='contentPanel'>
+                <div className='container-fluid'>
                     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-                        <a className='navbar-brand' href='#'>
-                            Navbar
-                        </a>
+                        <a className='navbar-brand' href='#'>Navbar</a>
                         <button
                             className='navbar-toggler'
                             type='button'
@@ -91,9 +91,11 @@ const Layout: React.SFC = (props: any) => {
                             </form>
                         </div>
                     </nav>
+                    <div className='row jumbotron'>row 1</div>
+                    <div className='row jumbotron'>row 2</div>
+                    <div className='row jumbotron'>row 3</div>
+                    <div className='row jumbotron'>row 4</div>
                 </div>
-                <div className='row jumbotron'>row 1</div>
-                <div className='row jumbotron'>row 2</div>
             </div>
         </div>
     );
