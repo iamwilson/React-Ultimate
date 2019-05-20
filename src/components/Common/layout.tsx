@@ -3,12 +3,12 @@ import * as React from 'react';
 
 const Layout: React.SFC = (props: any) => {
     return (
-        <div className=''>
+        <div className='app-container'>
             <div className='sidePanel'>
                 <div className='container'>sidePanel</div>
             </div>
             <div className='contentPanel'>
-                <div className='container-fluid'>
+                <div className=''>
                     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
                         <a className='navbar-brand' href='#'>Navbar</a>
                         <button

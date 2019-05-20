@@ -1,21 +1,27 @@
+.app-container{
+       overflow: hidden;
+}
+
 .sidePanel {
+       left: 0;
        z-index: 50;
        height: 100%;
-       background: #242428;
-       position: fixed;
-       top: 0;
-       left: 0;
-       right: 0;
-       color: white;
-       display: flex;
        width: 240px;
+       position: fixed;
+
+       padding: 1em;
+       color: white;
+       background: #242428;
 }
 
 .contentPanel {
-       background: #87bcf8;
        display: flex;
-       flex-direction: column;
-       max-width:  calc(100vw - 240px);
-       position: relative;
        margin-left: 240px;
+       position: relative;
+       flex-direction: column;
+       max-width: calc(100vw - 240px);
+
+       background: #87bcf8;
+
+       
 }
