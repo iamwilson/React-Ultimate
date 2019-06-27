@@ -11,13 +11,13 @@ interface ISidePanelProps {
 const SidePanelComponent: React.SFC<ISidePanelProps> = (props: ISidePanelProps) => {
     return (
         (
-            <div id="sidebar" className={props.openSideBar ? "open" : "close"}>
-                <Link className="sidebar-item" to="/home/department" replace>{props.language.sidebarComponent.department}</Link>
-                <Link className="sidebar-item" to="/home/about" replace>{props.language.sidebarComponent.about}</Link>
-                <button className="sidebar-item-button" onClick={props.logOutUser} >{props.language.sidebarComponent.logout}</button>
+            <div id='sidebar' className={props.openSideBar ? 'open' : 'close'}>
+                <Link className='sidebar-item' to='/home/department' replace={true}>{props.language.sidebarComponent.department}</Link>
+                <Link className='sidebar-item' to='/home/about' replace={true}>{props.language.sidebarComponent.about}</Link>
+                <button className='sidebar-item-button' onClick={props.logOutUser} >{props.language.sidebarComponent.logout}</button>
             </div>
         )
-    )
-}
+    );
+};
 
 export default SidePanelComponent;
