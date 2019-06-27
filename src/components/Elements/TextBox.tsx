@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface ITextboxProps {
   label?: string;
@@ -14,9 +14,9 @@ interface ITextboxProps {
 const TextBoxComponent = (props: ITextboxProps) => {
   return (
     <div>
-      <label className="input-label">{props.label}</label>
-      <label className="alert-danger">{props.error}</label>
-      <input className="input-field"
+      <label className='input-label'>{props.label}</label>
+      <label className='alert-danger'>{props.error}</label>
+      <input className='input-field'
         name={props.name}
         type={props.type}
         value={props.value}
