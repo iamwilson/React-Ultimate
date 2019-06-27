@@ -1,5 +1,5 @@
-import { initialState } from "../initialState";
-import * as types from "../../constants/actionTypes";
+import { initialState } from '../initialState';
+import * as types from '../../constants/actionTypes';
 
 const employeeReducer = (state = initialState.employee, action: any) => {
   switch (action.type) {
