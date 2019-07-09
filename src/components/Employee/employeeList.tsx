@@ -7,22 +7,19 @@ import { bindActionCreators } from 'redux';
 import { Employee } from '../../models/employee';
 import * as employeeActions from '../../actions/employeeActions';
 
-interface IEmployeeListComponentProps {
+interface IEmployeeListProps {
     actions: any;
     history: any;
     language: any;
     employeesResult: any;
 }
 
-interface IEmployeeListComponentState {
+interface IEmployeeListState {
     employees: Array<Employee>;
 }
 
-class EmployeeListComponent extends React.Component<
-    IEmployeeListComponentProps,
-    IEmployeeListComponentState
-> {
-    constructor(props: IEmployeeListComponentProps) {
+class EmployeeList extends React.Component<IEmployeeListProps, IEmployeeListState> {
+    constructor(props: IEmployeeListProps) {
         super(props);
 
         this.state = {
@@ -97,7 +94,4 @@ const mapDispatchToProps = (dispatch: any) => {
     };
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(EmployeeListComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeList);

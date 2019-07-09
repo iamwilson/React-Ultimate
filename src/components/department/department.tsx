@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class DepartmentComponent extends React.Component {
+class Department extends React.Component {
     render() {
         return (
             <div className='about-container'>
@@ -16,4 +16,4 @@ class DepartmentComponent extends React.Component {
     }
 }
 
-export default DepartmentComponent;
+export default Department;

@@ -12,7 +12,7 @@ interface ITextboxProps {
     onChange?: (event: any) => void;
 }
 
-const TextBoxComponent = (props: ITextboxProps) => {
+const TextBox = (props: ITextboxProps) => {
     return (
         <div>
             <label className='input-label'>{props.label}</label>
@@ -30,4 +30,4 @@ const TextBoxComponent = (props: ITextboxProps) => {
     );
 };
 
-export default TextBoxComponent;
+export default TextBox;

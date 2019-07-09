@@ -12,20 +12,20 @@ import * as validation from '../../utils/validationHelper';
 import * as loginActions from '../../actions/loginActions';
 import { responseInterceptor } from '../../utils/interceptors';
 
-interface ILoginComponentProps {
+interface ILoginProps {
   actions: any;
   history: any;
   language: any;
   loginResult: any;
 }
 
-interface ILoginComponentState {
+interface ILoginState {
   credentials: Credentials;
   errors: Credentials;
 }
 
-class LoginComponent extends React.Component<ILoginComponentProps, ILoginComponentState> {
-  constructor(props: ILoginComponentProps) {
+class Login extends React.Component<ILoginProps, ILoginState> {
+  constructor(props: ILoginProps) {
     super(props);
     this.state = {
       credentials: new Credentials(),
@@ -127,4 +127,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default withRouter<any>(connect(mapStateToProps, mapDispatchToProps)(LoginComponent));
+export default withRouter<any>(connect(mapStateToProps, mapDispatchToProps)(Login));
