@@ -1,7 +1,7 @@
-// base
+// core
 import * as React from 'react';
 
-const AboutComponent = () => {
+const About = () => {
     return (
         <div className='about-container'>
             <h2 className='header-wrapper'>EMS</h2>
@@ -10,4 +10,4 @@ const AboutComponent = () => {
     );
 };
 
-export default AboutComponent;
+export default About;

@@ -13,6 +13,9 @@ export default {
                 about: 'About',
                 logout: 'Logout'
             },
+            OfferComponent: {
+                title: 'Offer'
+            },
             loginComponent: {
                 title: 'EMS',
                 labels: {

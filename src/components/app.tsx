@@ -1,4 +1,4 @@
-// base
+// core
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -49,29 +49,9 @@ class App extends React.Component<IAppProps, IAppState> {
                 />
                 <React.Suspense fallback={<LoaderComponent isLoading={true} />}>
                     <Switch>
-                        <Route
-                            exact={true}
-                            path='/'
-                            render={() => <Redirect to='/login' />}
-                        />
-                        <Route
-                            path='/home'
-                            render={(props) => (
-                                <HomeComponent
-                                    {...props}
-                                    {...this.state.language}
-                                />
-                            )}
-                        />
-                        <Route
-                            path='/login'
-                            render={(props) => (
-                                <LoginComponent
-                                    {...props}
-                                    {...this.state.language}
-                                />
-                            )}
-                        />
+                        <Route exact={true} path='/' render={() => <Redirect to='/login' />} />
+                        <Route path='/home' render={(props) => (<HomeComponent {...props} {...this.state.language} />)} />
+                        <Route path='/login' render={(props) => (<LoginComponent {...props} {...this.state.language} />)}/>
                     </Switch>
                 </React.Suspense>
             </div>
@@ -91,9 +71,4 @@ const mapDispatchToProps = (dispatch: any) => {
     };
 };
 
-export default withRouter<any>(
-    connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(App)
-);
+export default withRouter<any>(connect(mapStateToProps, mapDispatchToProps)(App));

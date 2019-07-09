@@ -1,4 +1,4 @@
-// base
+// core
 import axios from 'axios';
 
 // configurations

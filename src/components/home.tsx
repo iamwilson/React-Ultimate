@@ -16,6 +16,7 @@ import EmployeeListComponent from './employee/employeeList';
 import { removeToken } from '../utils/tokenHelper';
 import { PrivateRoute, PublicRoute } from '../utils/routingHelper';
 import * as loginAction from '../actions/loginActions';
+import Offer from './offer/offer';
 
 interface IHomeProps {
     actions: any;
@@ -72,9 +73,10 @@ class HomeComponent extends React.Component<IHomeProps, IHomeState> {
                     {...this.props}
                 />
                 <Switch>
+                    <PublicRoute exact={true} path={'/home'} component={EmployeeListComponent} props={this.props} />
                     <PublicRoute path={'/home/about'} component={AboutComponent} props={this.props} />
-                    <PublicRoute path={'/home/employee/:id?'} component={EmployeeComponent} props={this.props}/>
-                    <PublicRoute exact={true} path={'/home'} component={EmployeeListComponent} props={this.props} />)} />
+                    <PublicRoute path={'/home/offer'} component={Offer} props={this.props} />
+                    <PublicRoute path={'/home/employee/:id?'} component={EmployeeComponent} props={this.props} />
                     <PrivateRoute authenticated={true} path='/home/department' component={DepartmentComponent} />
                 </Switch>
             </div>

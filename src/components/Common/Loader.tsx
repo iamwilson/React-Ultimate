@@ -4,7 +4,7 @@ interface ILoaderProps {
     isLoading: boolean;
 }
 
-const LoaderComponent = (props: ILoaderProps) => {
+const Loader = (props: ILoaderProps) => {
     return (
         props.isLoading && (
             <div className='loader-container'>
@@ -14,4 +14,4 @@ const LoaderComponent = (props: ILoaderProps) => {
     );
 };
 
-export default LoaderComponent;
+export default Loader;

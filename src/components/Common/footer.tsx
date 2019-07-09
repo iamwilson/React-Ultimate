@@ -1,4 +1,4 @@
-// base
+// core
 import * as React from 'react';
 
 interface IFooterComponentProps {
@@ -6,7 +6,7 @@ interface IFooterComponentProps {
   switchLanguage: (code: any) => void;
 }
 
-class FooterComponent extends React.Component<IFooterComponentProps, any> {
+class Footer extends React.Component<IFooterComponentProps, any> {
   render() {
     return (
       <div className='footer-bar'>
@@ -25,4 +25,4 @@ class FooterComponent extends React.Component<IFooterComponentProps, any> {
   }
 }
 
-export default FooterComponent;
+export default Footer;

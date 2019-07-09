@@ -13,6 +13,9 @@ export default {
                 about: 'Environ',
                 logout: 'Connectez - Out'
             },
+            OfferComponent: {
+                title: 'Offert'
+            },
             loginComponent: {
                 title: 'EMS',
                 labels: {
