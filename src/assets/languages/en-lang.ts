@@ -13,7 +13,7 @@ export default {
                 about: 'About',
                 logout: 'Logout'
             },
-            OfferComponent: {
+            offerComponent: {
                 title: 'Offer'
             },
             loginComponent: {

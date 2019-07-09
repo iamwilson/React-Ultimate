@@ -13,7 +13,7 @@ export default {
                 about: 'Environ',
                 logout: 'Connectez - Out'
             },
-            OfferComponent: {
+            offerComponent: {
                 title: 'Offert'
             },
             loginComponent: {
