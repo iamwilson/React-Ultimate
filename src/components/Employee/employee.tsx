@@ -51,7 +51,7 @@ class EmployeeComponent extends React.Component<IEmployeeComponentProps, IEmploy
             this.setState({ isUpdate: true, employee: data });
           },
           (error: any): void => {
-            console.log('There\'s an error', error);
+            //
           });
       });
     }

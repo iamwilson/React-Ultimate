@@ -73,7 +73,7 @@ class LoginComponent extends React.Component<ILoginComponentProps, ILoginCompone
           setToken(data);
         },
         (error: any) => {
-          console.log('there\'s an error ', error);
+          //
         }
       );
       this.props.history.replace('/home');

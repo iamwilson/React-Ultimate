@@ -6,7 +6,7 @@
         bottom: 0;
         z-index: 999;
         position: fixed;
-        background: $light-box;
+        background: rgba(0, 0, 0, 0.4);
     }
 
     .loader {
@@ -17,8 +17,8 @@
         height: 95px;
         border-radius: 50%;
         position: relative;
-        border: 13px solid $loader-border;
-        border-top: 13px solid $black;
+        border: 13px solid #f3f3f3;
+        border-top: 13px solid #037dee;
         animation: spin 1.5s linear infinite;
         -moz-animation: spin 1.5s linear infinite;
         -o-animation: spin 1.5s linear infinite;
@@ -36,7 +36,7 @@
         bottom: 0;
         z-index: 999;
         position: fixed;
-        background: $light-box;
+        background:  rgba(0, 0, 0, 0.4);
     }
 
     .loader {
@@ -47,8 +47,8 @@
         height: 120px;
         border-radius: 50%;
         position: relative;
-        border: 14px solid $loader-border;
-        border-top: 16px solid $blue;
+        border: 14px solid #f3f3f3;
+        border-top: 16px solid #037dee;
         animation: spin 1.5s linear infinite;
         -webkit-animation: spin 1.5s linear infinite;
     }

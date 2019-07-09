@@ -36,8 +36,7 @@ class EmployeeListComponent extends React.Component<
     componentDidMount() {
         this.props.actions.getEmployeesData().then(() => {
             const employeesObject = this.props.employeesResult.data;
-            console.log(employeesObject);
-            // this.setState({ employees: employeesObject });
+            this.setState({ employees: employeesObject });
         });
     }
 
