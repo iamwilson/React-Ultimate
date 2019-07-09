@@ -23,6 +23,7 @@
               "no-var-requires": false,
               "object-literal-shorthand": false,
               "no-console": false,
+              "disable-next-line": true,
               "indent": [
                      true,
                      "spaces",

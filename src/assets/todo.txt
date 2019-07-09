@@ -1,9 +1,17 @@
+Mutate table to card(s) view for mobile --> wip
+Add Swagger layer --> wip
+
 Add Login --> done
 Task Loader --> done
 Add Interceptor --> done
 Add code splitting --> done
 Abstract api calls --> done
 Add Hamburger Menu --> done
+Add meta tags --> done
+Add Source map --> done
+Add opacity for loader --> done
+Add Dev/ Prod/ Offline scripts --> done
+Remove bundle.js from index.html --> done
 
 Add Multi-language --> done
 Authenticated routes --> done
@@ -13,15 +21,6 @@ Restructure App component --> done
 Tidy up Sidepanel component --> done
 Add validation - email, phone, website --> done
 Use only one field for validating error messages --> done
-
-Add opacity for loader -->
-Mutate table to card(s) view for mobile -->
-
-Add Swagger layer -->
-Add meta tags -->
-Add Source map -->
-Add Dev/ Prod/ Offline scripts -->
-Remove bundle.js from index.html -->
 
 // Main
 Routing --> done
@@ -34,13 +33,13 @@ Authentication - All urls, Restrict direct url access - done
  - Persistent - close tab
  - Session -
 
-Service layer (tier) --> 75% done
+Service layer (tier) --> 75% wip
  - Ajax (swagger generated)
  - Action (redux) --> done
  - Online(REST call) - stateful --> done
  - Offline(JSON file) - simulated with delay --> done
 
-Build scripts 
+Build scripts -->  done
  - Dev - webpack dev server
  - Offline - looks like prod but contains no JSON
  - Prod - uglified, content slicing (font & images)

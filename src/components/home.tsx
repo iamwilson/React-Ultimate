@@ -1,8 +1,8 @@
-// base
+// core
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Switch, withRouter } from 'react-router-dom';
 
 // components
 import AboutComponent from './about/about';
@@ -14,7 +14,7 @@ import EmployeeListComponent from './employee/employeeList';
 
 // misc
 import { removeToken } from '../utils/tokenHelper';
-import { PrivateRoute } from '../utils/routingHelper';
+import { PrivateRoute, PublicRoute } from '../utils/routingHelper';
 import * as loginAction from '../actions/loginActions';
 
 interface IHomeProps {
@@ -54,18 +54,27 @@ class HomeComponent extends React.Component<IHomeProps, IHomeState> {
     }
 
     handleCloseSideBar() {
-        if (this.state.openSideBar === true) { this.setState({ openSideBar: false }); }
+        if (this.state.openSideBar === true) {
+            this.setState({ openSideBar: false });
+        }
     }
 
     render() {
         return (
             <div onClick={this.handleCloseSideBar}>
-                <SidePanelComponent openSideBar={this.state.openSideBar} logOutUser={this.handleLogOut} {...this.props} />
-                <HeaderComponent openSideBar={this.handleSideBar} {...this.props} />
+                <SidePanelComponent
+                    openSideBar={this.state.openSideBar}
+                    logOutUser={this.handleLogOut}
+                    {...this.props}
+                />
+                <HeaderComponent
+                    openSideBar={this.handleSideBar}
+                    {...this.props}
+                />
                 <Switch>
-                    <Route path='/home/about' component={AboutComponent} />
-                    <Route path='/home/employee/:id?' component={EmployeeComponent} />
-                    <Route exact={true} path='/home' render={(props) => <EmployeeListComponent {...props}{...this.props} />} />
+                    <PublicRoute path={'/home/about'} component={AboutComponent} props={this.props} />
+                    <PublicRoute path={'/home/employee/:id?'} component={EmployeeComponent} props={this.props}/>
+                    <PublicRoute exact={true} path={'/home'} component={EmployeeListComponent} props={this.props} />)} />
                     <PrivateRoute authenticated={true} path='/home/department' component={DepartmentComponent} />
                 </Switch>
             </div>
@@ -85,4 +94,9 @@ const mapDispatchToProps = (dispatch: any) => {
     };
 };
 
-export default withRouter<any>(connect(mapStateToProps, mapDispatchToProps)(HomeComponent));
+export default withRouter<any>(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(HomeComponent)
+);

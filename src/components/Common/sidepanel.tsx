@@ -14,6 +14,7 @@ const SidePanelComponent: React.SFC<ISidePanelProps> = (props: ISidePanelProps) 
             <div id='sidebar' className={props.openSideBar ? 'open' : 'close'}>
                 <Link className='sidebar-item' to='/home/department' replace={true}>{props.language.sidebarComponent.department}</Link>
                 <Link className='sidebar-item' to='/home/about' replace={true}>{props.language.sidebarComponent.about}</Link>
+                <Link className='sidebar-item' to='/home/offer' replace={true}>{props.language.sidebarComponent.about}</Link>
                 <button className='sidebar-item-button' onClick={props.logOutUser} >{props.language.sidebarComponent.logout}</button>
             </div>
         )
