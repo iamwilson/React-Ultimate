@@ -72,6 +72,7 @@ class HomeComponent extends React.Component<IHomeProps, IHomeState> {
                     openSideBar={this.handleSideBar}
                     {...this.props}
                 />
+                <div className='app-container'>
                 <Switch>
                     <PublicRoute exact={true} path={'/home'} component={EmployeeListComponent} props={this.props} />
                     <PublicRoute path={'/home/about'} component={AboutComponent} props={this.props} />
@@ -79,6 +80,7 @@ class HomeComponent extends React.Component<IHomeProps, IHomeState> {
                     <PublicRoute path={'/home/employee/:id?'} component={EmployeeComponent} props={this.props} />
                     <PrivateRoute authenticated={true} path='/home/department' component={DepartmentComponent} />
                 </Switch>
+                </div>
             </div>
         );
     }
