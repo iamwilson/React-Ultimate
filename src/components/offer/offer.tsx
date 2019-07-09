@@ -28,7 +28,7 @@ class Offer extends React.Component<IOfferProps, IOfferState> {
     render() {
         return (
             <React.Fragment>
-                <div className='offer-container'>
+                <div className='container'>
                     <div>Offer works !</div>
                 </div>
             </React.Fragment>
