@@ -1,2 +1,3 @@
 # React-Ultimate
-Enterprise App built with React and Redux
+
+Base Project Template for React Applications
