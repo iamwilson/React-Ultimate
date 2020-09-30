@@ -1,3 +1,3 @@
 # React-Ultimate
 
-Base Project Template for React Applications
+Base Sacaffolding Template for React Applications
